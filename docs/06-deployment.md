@@ -2,7 +2,7 @@
 
 ## GitHub
 
-- Repo: **`HarshilForWork/Hemang-riya-sangeet`**, branch `main`. It is meant to be **private**, because these docs describe who is and isn't invited to the wedding. **On 18 Nov 2026 GitHub showed it as public**, so these `docs/` were committed locally but not pushed. Make it private first (GitHub → Settings → Danger Zone → Change visibility, or `gh repo edit HarshilForWork/Hemang-riya-sangeet --visibility private --accept-visibility-change-consequences`), then push.
+- Repo: **`HarshilForWork/Hemang-riya-sangeet`**, branch `main`. It is meant to be **private**, because these docs describe who is and isn't invited to the wedding. It was created private, but **on 18 Nov 2026 GitHub showed it as public**. The first two commits (site + `CONTEXT.md`) were pushed while it was private and are now visible. These `docs/` are kept local until the repo is private again. Make it private first (GitHub → Settings → Danger Zone → Change visibility, or `gh repo edit HarshilForWork/Hemang-riya-sangeet --visibility private --accept-visibility-change-consequences`), then push.
 - Sibling sites: the full site (`site/`, `HarshilForWork/Hemang-riya`, hemang-riya.vercel.app) and the short invite (`lite-site/`, `HarshilForWork/riya-hemang-invite`, private, riya-hemang-invite.vercel.app). They are separate copies, so a fix in one doesn't reach the others.
 - Remote goes through Hemang's personal SSH key via the `github-personal` host alias (in `~/.ssh/config` on his Mac):
   ```bash
@@ -22,7 +22,7 @@
 2. Framework preset **Other**, no build command, output directory = repo root.
 3. Deploy. Likely URL `hemang-riya-sangeet.vercel.app` (or a custom domain). After that, every push to `main` deploys.
 
-`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs are never public even if the repo is.
+`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs never reach the live site. On GitHub, though, they're only hidden while the repo is private.
 
 ## Releasing a change
 

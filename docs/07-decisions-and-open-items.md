@@ -6,7 +6,7 @@
 |---|---|
 | Separate Sangeet-only site, built from a copy of the main site (18 Nov 2026) | Some guests are invited to the Sangeet only; the main site reveals the wedding |
 | Nothing anywhere hints at the wedding, served code comments included | Guests can view source; an accidental mention would be awkward |
-| Repo is private | Docs and commit history discuss the guest split |
+| Repo meant to be private | Docs and commit history discuss the guest split (it currently shows public; see open items) |
 | Hero unchanged; story cut to 4 chapters / 18 photos | Task: keep the hero and story "if they fit, or trim"; a Sangeet invite needs a lighter story. The garba chapter ties it to dancing, and chapter one's title ties the concert to music |
 | Proposal chapter rewritten without "for our wedding" | Wedding rule |
 | "come dance with…" instead of "welcome to the story of…" | The couple asked for "nice and cute", Sangeet-y; the hero name still finishes the sentence. Easy to revert in `UI.intro` / `ACCENT.intro` |
@@ -20,6 +20,7 @@
 ## Open items
 
 - [ ] **A separate Google Form for the Sangeet.** `RSVP_FORM` currently points to the same form as the main site. If that form asks about the wedding, Sangeet-only guests will see it. Once there's a Sangeet-only form, change `RSVP_FORM` (and the fallback hrefs in index.html).
+- [ ] **Repo visibility**: created private, but GitHub showed it **public** on 18 Nov 2026. Make it private, then push the docs (docs/06).
 - [ ] **Deploy**: import the repo as a second Vercel project (docs/06).
 - [ ] **Couple to approve the new copy** (docs/03 table, chapter titles 1/3, chapter 3/4 bodies, FAQ "Will there be dancing?").
 - [ ] **Gujarati proofreading** by a native speaker (all `gu`, `ACCENT`).
