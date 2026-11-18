@@ -1,70 +1,72 @@
-# CONTEXT — Sangeet-only site (start here)
+# CONTEXT — start here
 
-A second, **Sangeet-only** invite for Riya & Hemang, for guests invited to the Sangeet but **not** the wedding. Static HTML/CSS/JS, no build step, copied from the main site (`site/`, repo `HarshilForWork/Hemang-riya`, commit `d359100`) on 18 Nov 2026. Repo: `HarshilForWork/Hemang-riya-sangeet` (**private**, branch `main`, remote `git@github-personal:…`, commit as `HarshilForwork` via the repo's local git config, as on the main site). To deploy, import it as a second Vercel project: framework preset **Other**, no build command, output directory = repo root.
+This is the entry point for anyone, including a new Claude session, picking up the **Sangeet-only invite** for Riya & Hemang. Read it first, then the doc for whatever you're working on.
+
+## What this is
+
+A single static page (HTML/CSS/JS, no build step) inviting guests to the **Sangeet only**: Friday 22 January 2027, 6 PM onwards, Bhanushali Wadi, Nerul, Navi Mumbai. Some guests are invited to the Sangeet but **not** the wedding, so this is a separate site from the main one.
+
+- Repo: `HarshilForWork/Hemang-riya-sangeet`, branch `main`. It is **public** on GitHub (created private, switched to public on 18 Nov 2026). The docs and commit messages mention the wedding. They are never deployed (`.vercelignore`), but anyone who finds the repo can read them, so the couple may want it private again (Vercel deploys private repos too).
+- Live: not deployed yet (plan: a second Vercel project; see docs/06)
+- Built from: the main site at commit `d359100`, 18 Nov 2026. The code is a copy, not shared.
+- Languages: English, Gujarati, Mix (`?lang=en|gu|mix`)
+
+### The three sibling sites
+
+They are separate copies of the same code; a fix in one doesn't reach the others.
+
+| Folder | Repo | Live | For |
+|---|---|---|---|
+| `site/` | `HarshilForWork/Hemang-riya` | hemang-riya.vercel.app | everyone invited to both events (full story) |
+| `lite-site/` | `HarshilForWork/riya-hemang-invite` | riya-hemang-invite.vercel.app | the short invite, both events, less to read |
+| `sangeet-site/` (this) | `HarshilForWork/Hemang-riya-sangeet` | not yet | **Sangeet-only** guests |
+
+## Documentation map
+
+| Doc | Read it when you need… |
+|---|---|
+| [docs/01-project-overview.md](docs/01-project-overview.md) | Why this site exists, the event, the couple's tastes, what's on the page |
+| [docs/02-architecture.md](docs/02-architecture.md) | How the code works, RSVP links, the Sangeet touches (lights, notes, equalizer) |
+| [docs/03-content-guide.md](docs/03-content-guide.md) | Changing any text, the current copy in both languages, the 4-chapter story |
+| [docs/04-photos.md](docs/04-photos.md) | Which photo is used where, the stock photos, the photo rules |
+| [docs/05-testing.md](docs/05-testing.md) | The headless-Chrome harness, the wedding-leak test, last results |
+| [docs/06-deployment.md](docs/06-deployment.md) | Git identity and SSH alias, setting up Vercel, releasing |
+| [docs/07-decisions-and-open-items.md](docs/07-decisions-and-open-items.md) | Why things are the way they are, and what's still to do |
+
+## Rules that matter most
+
+1. **Never reveal the wedding on the site.** No mention of it, its city, date, venue, trains, travel or stay, in any language, pop-up, FAQ, photo (including text inside stock photos) or served file (`index.html`, `app.js`, `styles.css`, code comments included). Run `tools/test/test-sangeet.js` after every change and look at new images by eye.
+2. **Never crop either face** in the couple's photos, at any screen size. **No dates on photos.** Cards, banners and the event photo use stock photos (docs/04).
+3. **Test at phone size too** (390×664 and 1440×900 at least), not just desktop (docs/05).
+4. **Every visible text has English and Gujarati.** The Gujarati here is machine-written and needs proofreading.
+5. **Bump `?v=N`** on `styles.css` / `app.js` in index.html whenever you change them.
+6. **Commit as `HarshilForwork`** (repo-local config), never the global work identity. Push via `git@github-personal:…`.
+7. Every RSVP button opens the Google Form in `RSVP_FORM` (top of app.js) in a new tab. There is no on-site form.
+8. Bug fixes in shared code don't arrive here automatically; copy them by hand and re-check for wedding mentions.
+
+## Quick commands
 
 ```bash
-cd sangeet-site && python3 -m http.server 5181      # then open http://localhost:5181/?lang=en  (or gu / mix)
+python3 -m http.server 5181          # from the repo root → http://localhost:5181/?lang=en
+node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-sangeet.js
+node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-audit.js
+node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-story.js
+node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 1440 900 0 tools/test/test-hero.js
 ```
 
-The code works exactly like the main site. Read the main site's `CONTEXT.md` and `docs/02–05` for the architecture, photo rules and test harness. This file only lists what is different.
+## What's different from the main site (summary)
 
-## The one rule that matters most here
-
-**Nothing may mention the wedding**: no word "wedding", Nadiad, the 27 January date, the venue, trains, travel or stay. This applies to every language, every pop-up and FAQ answer, and also to the **served code and comments** (`index.html`, `app.js`, `styles.css`), because guests can view source. It also applies to **text inside photos** (the main site's RSVP stock photo said "WEDDING PARTY", so it was swapped). `tools/test/test-sangeet.js` checks all the text. Check new photos by eye.
-
-## Event details
-
-- **Sangeet**: Friday, 22 January 2027, 6:00 PM onwards
-- **Venue**: Bhanushali Wadi, Basveshewar Maharaj Marg, Nerul East, Sector 19A, Nerul, Navi Mumbai, Maharashtra 400706 (map in the Sangeet pop-up)
-- **Contacts**: Hemang +91 97693 33516 and Harsh +91 83698 94213 (`CONTACTS`, same as the main site)
-- **Countdown**: `COUNTDOWN_TARGET` = 22 Jan 2027 18:00 IST, "until the sangeet"
-- **RSVP**: every RSVP button is a link to the Google Form in `RSVP_FORM` (top of `app.js`) and opens in a new tab. On start, `app.js` copies that URL onto every `a[data-rsvp]`, so the URL only needs changing in one place. There is no on-site form. It is currently **the same form as the main site**, so the couple may want a separate Sangeet form.
-
-## What changed from the main site
-
-| Area | Main site | Sangeet site |
+| | Main site | This site |
 |---|---|---|
-| Welcome screen | "welcome to the story of…" | "come dance with…" (+ "scroll to begin"), fairy lights, floating music notes |
-| Nav | Sangeet · Wedding · FAQ · RSVP | Sangeet · FAQ · RSVP (RSVP is a link to the form) |
-| Hero | photos 37 + 68/52/54/5 | unchanged |
-| Story | 5 chapters, 30 photos, 13 hashtags | 4 chapters, 18 photos, 9 hashtags: *it all started with music* (1, 69, 3, 4) · *our firsts* (41, 6, 8, 45, 61) · *adventures & garba nights* (7, 47, 16, 57, 58) · *the question* (32, 36, 26, 38, without wedding wording) |
-| Countdown | "january 22 & 27, 2027", until the wedding | "so come dance with us…", "january 22, 2027", until the sangeet; confetti now includes music notes; fairy lights on top |
-| Events | two cards (Sangeet, Wedding) | one invite card: tilted print-style photo (`assets/stock/event-sangeet.jpg`), handwritten "an evening of music & dance" and "bring your dancing shoes!", an equalizer next to the time, RSVP + "Map & contacts" buttons |
-| RSVP | Google Form (was an on-site form with travel/stay questions) | Google Form links only; the train, travel and stay questions are gone |
-| Detail cards | Sangeet, Wedding, Travel & Stay, RSVP, hashtag, More to come | Sangeet (map + contacts + RSVP), RSVP (link out, ↗ icon, dandiya stock photo), #RiyaSangHemang |
-| Vision line | "Two very different people…" | "One evening, two families, and a dance floor that won't stay empty for long." |
-| FAQ | 7 incl. wedding, trains, other events | 6: when/where, RSVP, finding the venue, dancing, dietary needs, hashtag |
-| Footer | "from a concert in Toronto to a mandap in Nadiad." | "it all began at a concert, so of course there'll be music." + fairy lights |
-| Tap anywhere | hearts | music notes and hearts in festive colours |
+| Welcome | "welcome to the story of…" | "come dance with…", fairy lights, floating notes |
+| Story | 5 chapters, 30 photos | 4 chapters, 18 photos, 9 hashtags |
+| Countdown | Jan 22 & 27, until the wedding | Jan 22, until the sangeet; music-note confetti |
+| Events | Sangeet + Wedding | one invite card with equalizer, "bring your dancing shoes!" |
+| Cards | 6 (incl. Wedding, Travel & Stay, More to come) | 3: Sangeet (map + contacts), RSVP (link), hashtag |
+| FAQ / footer | wedding, trains, Nadiad | Sangeet-only; "it all began at a concert, so of course there'll be music." |
 
-New styles are at the end of `styles.css` ("SANGEET TOUCHES"). The calm palette is unchanged, with three accents added: `--marigold`, `--rose`, `--glow`. Animations stop when the device asks for reduced motion. `buildLights()` in `app.js` draws the garlands into any `[data-lights]` element.
+Full list: docs/07 and docs/03.
 
-## Files and assets
+## Current status (18 Nov 2026)
 
-- `assets/rh/`: only the 23 couple photos this page uses (the `PHOTOS` table is trimmed to match).
-- `assets/stock/`: `sangeet.jpg` (tabla, Sangeet card + pop-up), `event-sangeet.jpg` (dance party, event card), `dandiya.jpg` (RSVP card; the main site's `more-dandiya.jpg`, Unsplash 1606293927185-20fad5f0a93e), `hashtag.jpg`. All are Unsplash License stock photos, sourced as in the main site's docs/04. The wedding, travel, rsvp-stationery and "more" photos were left out on purpose.
-- `.vercelignore` keeps `tools/`, `*.md` and `.claude/` out of a deployment. `vercel.json` and `robots.txt` (noindex) are unchanged.
-- `?v=N` cache-busting restarted at `styles.css?v=1`, `app.js?v=2`. Bump on every change.
-
-## Tests
-
-The harness and tests come from the main site (`tools/test/`, see main docs/05), adapted for this page:
-
-```bash
-node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-sangeet.js   # no wedding text, RSVP links, countdown, lights
-node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-audit.js     # 18 story photos, faces, stock art, languages
-node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-story.js     # expect 18 photos, 9 hashtags, 4 chapters
-node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-hero.js
-node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-welcome.js
-SHOT=/tmp/x.jpg node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en&shot=events" 390 664 1 tools/test/shot.js   # screenshot a section
-```
-
-`test-rsvp.js` was dropped because there is no on-site form. Results on 18 Nov 2026, at 390×664 and 1440×900: everything clean, except Mix mode at 390×664, where `chapterTextOverlapsPile` shows the same graze as on the main site (a known open item there, not new).
-
-## Open items
-
-- [ ] **A separate Google Form for the Sangeet?** Right now it uses the main site's form, which may ask about the wedding. If guests who aren't invited to the wedding open it, they'll see that. Set `RSVP_FORM` once there's a Sangeet-only form.
-- [ ] Couple to approve the new playful copy (welcome line, chapter titles/bodies, vision line, FAQ "Will there be dancing?", footer).
-- [ ] Gujarati proofreading by a native speaker. All Sangeet copy is new and was machine-written.
-- [ ] Hosting: import the GitHub repo as a second Vercel project (repo exists; not deployed yet).
-- [ ] If the main site's code gets fixes later, apply them here by hand (this is a copy, not shared code).
+Built and tested: all clean at phone and desktop, except the Mix-mode story graze on short phones, which is the same as on the main site. Pushed to GitHub (public), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), a decision on repo visibility, the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.

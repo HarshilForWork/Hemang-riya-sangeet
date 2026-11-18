@@ -1,0 +1,32 @@
+# 06 · Deployment
+
+## GitHub
+
+- Repo: **`HarshilForWork/Hemang-riya-sangeet`**, branch `main`. It is meant to be **private**, because these docs describe who is and isn't invited to the wedding. **On 18 Nov 2026 GitHub showed it as public**, so these `docs/` were committed locally but not pushed. Make it private first (GitHub → Settings → Danger Zone → Change visibility, or `gh repo edit HarshilForWork/Hemang-riya-sangeet --visibility private --accept-visibility-change-consequences`), then push.
+- Sibling sites: the full site (`site/`, `HarshilForWork/Hemang-riya`, hemang-riya.vercel.app) and the short invite (`lite-site/`, `HarshilForWork/riya-hemang-invite`, private, riya-hemang-invite.vercel.app). They are separate copies, so a fix in one doesn't reach the others.
+- Remote goes through Hemang's personal SSH key via the `github-personal` host alias (in `~/.ssh/config` on his Mac):
+  ```bash
+  git remote -v   # origin  git@github-personal:HarshilForWork/Hemang-riya-sangeet.git
+  ```
+- **Commit identity**: the repo's local config is Hemang's personal GitHub identity (`HarshilForwork`). The global git config on that Mac is his **work** identity, which must not be used. Check before committing:
+  ```bash
+  git config user.name    # HarshilForwork
+  ```
+- `gh` is logged in with two accounts; the active one should be `HarshilForWork` (`gh auth status`).
+- Commit messages end with a `Co-Authored-By:` line when written with Claude.
+- The local copy currently lives in a scratch folder of a Claude session (next to the main site's `site/`). If that session is deleted the folder goes too, so GitHub is the source of truth. Clone it somewhere permanent for further work.
+
+## Vercel (not set up yet)
+
+1. vercel.com/new → import `HarshilForWork/Hemang-riya-sangeet` (grant the Vercel GitHub app access to the repo if it isn't listed).
+2. Framework preset **Other**, no build command, output directory = repo root.
+3. Deploy. Likely URL `hemang-riya-sangeet.vercel.app` (or a custom domain). After that, every push to `main` deploys.
+
+`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs are never public even if the repo is.
+
+## Releasing a change
+
+1. Edit, then bump `?v=N` for `styles.css` / `app.js` in index.html.
+2. Test at phone and desktop (docs/05), **including `test-sangeet.js`**.
+3. Commit and push to `main`.
+4. Check the live version: `curl -s https://<sangeet-url>/ | grep -o 'app.js?v=[0-9]*'`.
