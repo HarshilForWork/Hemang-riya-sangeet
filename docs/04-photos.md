@@ -11,7 +11,7 @@
 
 ## The couple's photos used here
 
-On branch `short`: **8 files**, hero 37, 68, 52, 54, 5 and story 1, 57, 32. `PHOTOS` was regenerated with `faces.swift` + `update_photos.py`, and the rows are identical to the main site's. The table below is the full version on `main` (23 files).
+Now **8 files**, hero 37, 68, 52, 54, 5 and story 1, 57, 32. `PHOTOS` was regenerated with `faces.swift` + `update_photos.py`, and the rows are identical to the main site's. The table below is the earlier full version (branch `full`, 23 files).
 
 Numbers match the main site and the original folder on Hemang's Mac. The story behind each is in the main site's docs/04.
 

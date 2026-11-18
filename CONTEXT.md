@@ -1,9 +1,9 @@
 # CONTEXT — start here
 
-> **Branch `short` (local only, awaiting Hemang's approval, 18 Nov 2026):** the trimmed version, cut the way the
-> short invite (`lite-site/`) was. One story chapter with 3 photos, no big centre line, no footer, 4 FAQs. The page is about
-> 11 phone screens instead of 21. `main` keeps the full Sangeet version. Not pushed or deployed. If Hemang approves,
-> merge `short` into `main` (or push `short` and deploy from it).
+> **`main` is the trimmed version** (Hemang approved it on 18 Nov 2026), cut the way the short invite (`lite-site/`) was:
+> one story chapter with 3 photos, no big centre line, no footer, 4 FAQs. The page is about 11 phone screens instead of 21.
+> The earlier, fuller Sangeet version (4-chapter story, 18 photos, vision line, footer, 6 FAQs) is commit `e1e8ed3`,
+> kept as the local branch `full` (not pushed). Where these docs mention the "full version" or branch `full`, they mean that one.
 
 This is the entry point for anyone, including a new Claude session, picking up the **Sangeet-only invite** for Riya & Hemang. Read it first, then the doc for whatever you're working on.
 
@@ -75,4 +75,4 @@ Full list: docs/07 and docs/03.
 
 ## Current status (18 Nov 2026)
 
-Built and tested: all clean at phone and desktop, except the Mix-mode story graze on short phones, which is the same as on the main site. Site and docs pushed to GitHub (public), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.
+Built, trimmed (Hemang approved the short version) and tested: all clean at phone and desktop in EN, GU and Mix. Site and docs pushed to GitHub (public), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.

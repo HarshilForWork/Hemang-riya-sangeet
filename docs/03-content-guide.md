@@ -30,11 +30,11 @@ All guest-facing text is in `app.js` near the top (and a little in `index.html` 
 
 The story intro ("a few moments that led us here…" → "our love story") is the main site's approved wording.
 
-## Story: one short chapter (branch `short`)
+## Story: one short chapter (current)
 
 *our story, the short version* / *અમારી કહાણી, ટૂંકમાં*: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes." Photos: 1 "Where it all began" · 57 #FirstNavratri · 32 #SheSaidYes (2 hashtags). It's modelled on the short invite's chapter, with a music/garba twist, and keeps the paragraph short so it clears the photo pile in Mix mode on short phones.
 
-## The full story on `main` (4 chapters, 18 photos, 9 hashtags)
+## The earlier full story (branch `full`: 4 chapters, 18 photos, 9 hashtags)
 
 A shorter cut of the main site's 5-chapter story. Captions and hashtags are the main site's approved ones; chapter titles and bodies were changed where noted.
 
@@ -45,11 +45,11 @@ A shorter cut of the main site's 5-chapter story. Captions and hashtags are the 
 
 Rules: **no dates on photos**; a tagged photo's caption stays empty (`""`) in both languages; hashtags stay in Latin script in every language.
 
-## FAQ (4 on `short`)
+## FAQ (4)
 
 When and where is the Sangeet? · How do I RSVP? (Google Form in a new tab, or call/text Hemang or Harsh) · How do I find the venue? (Sangeet card / Map & contacts) · Do you have a hashtag?
 
-Removed on `short` (as on the short invite): "Will there be dancing?" and the dietary-needs question. The vision line and the footer quote are gone too.
+Removed when trimmed (as on the short invite): "Will there be dancing?" and the dietary-needs question. The vision line and the footer quote are gone too.
 
 Deliberately **not** included: anything about other events, travel or stay (they would point to the wedding).
 
