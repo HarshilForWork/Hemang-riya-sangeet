@@ -6,7 +6,7 @@ This is the entry point for anyone, including a new Claude session, picking up t
 
 A single static page (HTML/CSS/JS, no build step) inviting guests to the **Sangeet only**: Friday 22 January 2027, 6 PM onwards, Bhanushali Wadi, Nerul, Navi Mumbai. Some guests are invited to the Sangeet but **not** the wedding, so this is a separate site from the main one.
 
-- Repo: `HarshilForWork/Hemang-riya-sangeet`, branch `main`. Meant to be **private**: it was created private, but GitHub showed it **public** on 18 Nov 2026. The docs mention the wedding. They never reach the live site (`.vercelignore`), but on GitHub anyone can read them, so `docs/` stays local until the repo is private again (docs/06). Vercel deploys private repos too.
+- Repo: `HarshilForWork/Hemang-riya-sangeet`, branch `main`. **Public**, by Hemang's choice (18 Nov 2026). The repo docs mention the wedding, which is fine because they never reach the live site (`.vercelignore`). Still: **the served files must stay wedding-free**, and don't link the GitHub repo from the site.
 - Live: not deployed yet (plan: a second Vercel project; see docs/06)
 - Built from: the main site at commit `d359100`, 18 Nov 2026. The code is a copy, not shared.
 - Languages: English, Gujarati, Mix (`?lang=en|gu|mix`)
@@ -19,7 +19,7 @@ They are separate copies of the same code; a fix in one doesn't reach the others
 |---|---|---|---|
 | `site/` | `HarshilForWork/Hemang-riya` | hemang-riya.vercel.app | everyone invited to both events (full story) |
 | `lite-site/` | `HarshilForWork/riya-hemang-invite` | riya-hemang-invite.vercel.app | the short invite, both events, less to read |
-| `sangeet-site/` (this) | `HarshilForWork/Hemang-riya-sangeet` (meant to be private) | not yet | **Sangeet-only** guests |
+| `sangeet-site/` (this) | `HarshilForWork/Hemang-riya-sangeet` (public) | not yet | **Sangeet-only** guests |
 
 ## Documentation map
 
@@ -69,4 +69,4 @@ Full list: docs/07 and docs/03.
 
 ## Current status (18 Nov 2026)
 
-Built and tested: all clean at phone and desktop, except the Mix-mode story graze on short phones, which is the same as on the main site. Site pushed to GitHub (repo currently showing public; `docs/` not pushed yet), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), a decision on repo visibility, the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.
+Built and tested: all clean at phone and desktop, except the Mix-mode story graze on short phones, which is the same as on the main site. Site and docs pushed to GitHub (public), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.
