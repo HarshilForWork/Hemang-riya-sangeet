@@ -1,5 +1,10 @@
 # CONTEXT — start here
 
+> **Branch `short` (local only, awaiting Hemang's approval, 18 Nov 2026):** the trimmed version, cut the way the
+> short invite (`lite-site/`) was. One story chapter with 3 photos, no big centre line, no footer, 4 FAQs. The page is about
+> 11 phone screens instead of 21. `main` keeps the full Sangeet version. Not pushed or deployed. If Hemang approves,
+> merge `short` into `main` (or push `short` and deploy from it).
+
 This is the entry point for anyone, including a new Claude session, picking up the **Sangeet-only invite** for Riya & Hemang. Read it first, then the doc for whatever you're working on.
 
 ## What this is
@@ -27,7 +32,7 @@ They are separate copies of the same code; a fix in one doesn't reach the others
 |---|---|
 | [docs/01-project-overview.md](docs/01-project-overview.md) | Why this site exists, the event, the couple's tastes, what's on the page |
 | [docs/02-architecture.md](docs/02-architecture.md) | How the code works, RSVP links, the Sangeet touches (lights, notes, equalizer) |
-| [docs/03-content-guide.md](docs/03-content-guide.md) | Changing any text, the current copy in both languages, the 4-chapter story |
+| [docs/03-content-guide.md](docs/03-content-guide.md) | Changing any text, the current copy in both languages, the one-chapter story |
 | [docs/04-photos.md](docs/04-photos.md) | Which photo is used where, the stock photos, the photo rules |
 | [docs/05-testing.md](docs/05-testing.md) | The headless-Chrome harness, the wedding-leak test, last results |
 | [docs/06-deployment.md](docs/06-deployment.md) | Git identity and SSH alias, setting up Vercel, releasing |
@@ -59,11 +64,12 @@ node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 1440 900 0 tools/t
 | | Main site | This site |
 |---|---|---|
 | Welcome | "welcome to the story of…" | "come dance with…", fairy lights, floating notes |
-| Story | 5 chapters, 30 photos | 4 chapters, 18 photos, 9 hashtags |
+| Story | 5 chapters, 30 photos | 1 short chapter, 3 photos (1, 57 #FirstNavratri, 32 #SheSaidYes) |
 | Countdown | Jan 22 & 27, until the wedding | Jan 22, until the sangeet; music-note confetti |
 | Events | Sangeet + Wedding | one invite card with equalizer, "bring your dancing shoes!" |
 | Cards | 6 (incl. Wedding, Travel & Stay, More to come) | 3: Sangeet (map + contacts), RSVP (link), hashtag |
-| FAQ / footer | wedding, trains, Nadiad | Sangeet-only; "it all began at a concert, so of course there'll be music." |
+| Vision line, footer | yes | removed; the page ends with the FAQ's "We cannot wait to dance with you." |
+| FAQ | 7, incl. wedding, trains | 4: when/where, RSVP, finding the venue, hashtag |
 
 Full list: docs/07 and docs/03.
 

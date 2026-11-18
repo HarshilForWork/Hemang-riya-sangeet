@@ -26,13 +26,15 @@ All guest-facing text is in `app.js` near the top (and a little in `index.html` 
 | Invite card | an evening of music & dance · bring your dancing shoes! · Map & contacts | સંગીત અને નૃત્યની એક સાંજ · નાચવાની પૂરી તૈયારી સાથે આવજો! · નકશો અને સંપર્ક |
 | RSVP | a quick google form, takes a minute | એક નાનું Google ફોર્મ, ફક્ત એક મિનિટ |
 | Details sub | Everything you need for one very musical evening. | સંગીતભરી એક સાંજ માટે જરૂરી બધી માહિતી. |
-| Big line | One evening, two families, and a dance floor that won't stay empty for long. | એક સાંજ, બે પરિવાર, અને એક ડાન્સ ફ્લોર — જે લાંબો સમય ખાલી નહીં રહે. |
 | FAQ outro | We cannot wait to dance with you. | આપની સાથે ઝૂમવા અમે આતુર છીએ. |
-| Footer | it all began at a concert, so of course there'll be music. | બધું એક કોન્સર્ટથી શરૂ થયું હતું — એટલે સંગીત તો હોવાનું જ! |
 
 The story intro ("a few moments that led us here…" → "our love story") is the main site's approved wording.
 
-## Story (4 chapters, 18 photos, 9 hashtags)
+## Story: one short chapter (branch `short`)
+
+*our story, the short version* / *અમારી કહાણી, ટૂંકમાં*: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes." Photos: 1 "Where it all began" · 57 #FirstNavratri · 32 #SheSaidYes (2 hashtags). It's modelled on the short invite's chapter, with a music/garba twist, and keeps the paragraph short so it clears the photo pile in Mix mode on short phones.
+
+## The full story on `main` (4 chapters, 18 photos, 9 hashtags)
 
 A shorter cut of the main site's 5-chapter story. Captions and hashtags are the main site's approved ones; chapter titles and bodies were changed where noted.
 
@@ -43,9 +45,11 @@ A shorter cut of the main site's 5-chapter story. Captions and hashtags are the 
 
 Rules: **no dates on photos**; a tagged photo's caption stays empty (`""`) in both languages; hashtags stay in Latin script in every language.
 
-## FAQ (6)
+## FAQ (4 on `short`)
 
-When and where is the Sangeet? · How do I RSVP? (Google Form in a new tab, or call/text Hemang or Harsh) · How do I find the venue? (Sangeet card / Map & contacts) · Will there be dancing? · I have dietary needs (put it in the form, or tell Hemang or Harsh) · Do you have a hashtag?
+When and where is the Sangeet? · How do I RSVP? (Google Form in a new tab, or call/text Hemang or Harsh) · How do I find the venue? (Sangeet card / Map & contacts) · Do you have a hashtag?
+
+Removed on `short` (as on the short invite): "Will there be dancing?" and the dietary-needs question. The vision line and the footer quote are gone too.
 
 Deliberately **not** included: anything about other events, travel or stay (they would point to the wedding).
 

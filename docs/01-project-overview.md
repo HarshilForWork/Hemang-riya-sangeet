@@ -30,14 +30,12 @@ Riya & Hemang have two celebrations: the **Sangeet** (Navi Mumbai) and the **wed
 
 1. **Welcome screen**: "come dance with…" + "scroll to begin" on the dark warm colour, with a garland of fairy lights and music notes floating up. A scroll, swipe, ↓ key or tap opens the site, and the hero's big "Riya & Hemang" finishes the sentence.
 2. **Hero**: photo 37 (Toronto streetcar) shrinking into a collage with 68, 52, 54 and 5. This is the same as the main site.
-3. "a few moments that led us here…" leading into **our love story**: 4 chapters, 18 photos as Instagram prints with handwritten hashtags or captions.
+3. "a few moments that led us here…" leading into **our love story**: one short chapter, "our story, the short version", with 3 photos as Instagram prints (1 "Where it all began", 57 #FirstNavratri, 32 #SheSaidYes).
 4. **Countdown**: "so come dance with us…", "january 22, 2027", days/hours/minutes/seconds "until the sangeet". Confetti with music notes, fairy lights along the top.
 5. **The invite card**: a stock dance-party photo in a tilted white print frame, then "The Sangeet", handwritten "an evening of music & dance", the date, the time with a bouncing equalizer, venue, address (links to Google Maps), "bring your dancing shoes!", and **RSVP now** + **Map & contacts** buttons.
 6. **RSVP** callout: "a quick google form, takes a minute" + RSVP now.
 7. **Details**: three cards. Sangeet (pop-up with when/where, map, contacts, RSVP), RSVP (link to the form), #RiyaSangHemang (pop-up).
-8. Big line: "One evening, two families, and a dance floor that won't stay empty for long."
-9. **FAQ** (6 questions) and "We cannot wait to dance with you."
-10. **Footer**: "it all began at a concert, so of course there'll be music." on the dark colour with fairy lights.
+8. **FAQ** (4 questions) and "We cannot wait to dance with you.", which is where the page ends (no big centre line, no footer section; trimmed like the short invite).
 
 Floating: language button (EN / ગુજ / Mix), menu bar (R&H · Sangeet · FAQ · RSVP), music notes and hearts when you tap empty space.
 

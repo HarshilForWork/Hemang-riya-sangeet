@@ -40,10 +40,8 @@
       rsvpTitle: "RSVP", rsvpNote: "a quick google form, takes a minute", rsvpBtn: "RSVP now",
       detailsTitle: "and now some additional details...",
       detailsSub: "Everything you need for one very musical evening.",
-      vision: "One evening, two families, and a dance floor that won't stay empty for long.",
       faqTitle: "Questions and answers", faqHelp: "Can't find the answer here?", faqLink: "Reach out to Hemang or Harsh",
       faqOutro: "We cannot wait to dance with you.",
-      footerQuote: "it all began at a concert, so of course there'll be music.",
       // used inside pop-ups
       call: "Call", whatsapp: "WhatsApp", rsvpContact: "Questions? Ask", openMaps: "Open in Google Maps", mapTitle: "Map to the venue",
     },
@@ -61,10 +59,8 @@
       rsvpTitle: "હાજરી જણાવશો", rsvpNote: "એક નાનું Google ફોર્મ, ફક્ત એક મિનિટ", rsvpBtn: "હાજરી જણાવો",
       detailsTitle: "અને હવે થોડી વધુ વિગતો...",
       detailsSub: "સંગીતભરી એક સાંજ માટે જરૂરી બધી માહિતી.",
-      vision: "એક સાંજ, બે પરિવાર, અને એક ડાન્સ ફ્લોર — જે લાંબો સમય ખાલી નહીં રહે.",
       faqTitle: "પ્રશ્નો અને જવાબો", faqHelp: "અહીં જવાબ ન મળ્યો?", faqLink: "હેમાંગ અથવા હર્ષનો સંપર્ક કરો",
       faqOutro: "આપની સાથે ઝૂમવા અમે આતુર છીએ.",
-      footerQuote: "બધું એક કોન્સર્ટથી શરૂ થયું હતું — એટલે સંગીત તો હોવાનું જ!",
       call: "ફોન કરો", whatsapp: "વૉટ્સએપ", rsvpContact: "પ્રશ્ન હોય તો", openMaps: "Google Maps માં ખોલો", mapTitle: "સ્થળનો નકશો",
     },
   };
@@ -79,9 +75,7 @@
     sangeetKicker: "સંગીત સંધ્યા",
     rsvp: "આપની હાજરી જણાવશો",
     details: "થોડી વધુ વિગતો",
-    vision: "એક સાંજ, બે પરિવાર, એક ડાન્સ ફ્લોર",
     faq: "પ્રશ્નો અને જવાબો",
-    footer: "શરૂઆત કોન્સર્ટથી, એટલે સંગીત તો હોવાનું જ",
   };
 
   // Every photo used on the site: [width, height, then the area to keep visible when a box has to crop it
@@ -89,90 +83,33 @@
   // (Same rows as the main site; only the photos this page uses are kept.)
   const PHOTOS = {
     1: [1200, 1600, 0.12, 0.311, 0.831, 0.635],
-    3: [1200, 1600, 0.194, 0.29, 0.877, 0.605],
-    4: [1200, 1600, 0.141, 0.232, 0.912, 0.773],
     5: [1200, 1600, 0.289, 0.225, 0.629, 0.429],
-    6: [1200, 1600, 0.0, 0.249, 0.613, 0.639],
-    7: [1200, 1600, 0.41, 0.385, 0.615, 0.519],
-    8: [1200, 1600, 0.493, 0.462, 0.868, 0.711],
-    16: [1200, 1600, 0.477, 0.158, 0.656, 0.33],
-    26: [1066, 1600, 0.213, 0.556, 0.665, 0.662],
     32: [1066, 1600, 0.196, 0.563, 0.763, 0.705],
-    36: [1066, 1600, 0.3, 0.2, 0.7, 0.6],
     37: [1600, 1066, 0.225, 0.31, 0.807, 0.667],
-    38: [1200, 1600, 0.476, 0.423, 0.588, 0.517],
-    41: [1200, 1600, 0.3, 0.2, 0.7, 0.6],
-    45: [1200, 1600, 0.268, 0.27, 0.709, 0.608],
-    47: [1200, 1600, 0.452, 0.406, 0.685, 0.489],
     52: [1200, 1600, 0.434, 0.43, 0.705, 0.598],
     54: [1600, 1200, 0.316, 0.258, 0.682, 0.605],
     57: [1200, 1600, 0.276, 0.217, 0.685, 0.372],
-    58: [1200, 1600, 0.401, 0.319, 0.581, 0.477],
-    61: [1200, 1600, 0.3, 0.2, 0.7, 0.6],
     68: [1200, 1600, 0.17, 0.263, 0.739, 0.57],
-    69: [1200, 1600, 0.3, 0.2, 0.7, 0.6],
   };
 
-  // Story chapters (a shorter cut of the main site's story: 4 chapters, 18 photos).
+  // Story: ONE short chapter with 3 photos (the short version, like the short invite).
   // photos: file numbers; caps: caption under each photo (same order), per language.
-  // tags: optional hashtag (used for "firsts"). Each frame looks like an Instagram print: white border,
-  // deeper bottom edge with the hashtag (or, for untagged photos, the caption) handwritten on it.
-  // No dates on the photos (Hemang). Frames take the photo's own shape, so nothing is ever cropped.
+  // tags: optional hashtag; a tagged photo's caption stays "". Frames look like Instagram prints
+  // (white border, deeper bottom edge with the hashtag or caption handwritten on it). No dates on photos.
+  // Frames take the photo's own shape, so nothing is ever cropped.
   const STORY = [
     {
-      side: "left", photos: [1, 69, 3, 4],
-      tags: [null, "#FirstHotChocolate", null, null],
+      side: "left", photos: [1, 57, 32],
+      tags: [null, "#FirstNavratri", "#SheSaidYes"],
       en: {
-        title: "chapter one: it all started with music",
-        body: "We met for the first time at a concert — and somehow didn't take a single photo. Our second date was the Christmas tree lighting at the Distillery District: our first hot chocolate, and our very first picture together.",
-        caps: ["The Distillery District, our first photo", "", "Our first December, twinkle lights & all", "Cold noses, warm hearts"],
+        title: "our story, the short version",
+        body: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes.",
+        caps: ["Where it all began", "", ""],
       },
       gu: {
-        title: "પ્રકરણ એક: શરૂઆત સંગીતથી થઈ",
-        body: "અમે પહેલી વાર એક કોન્સર્ટમાં મળ્યા — અને ત્યારે એક પણ ફોટો ન પાડ્યો! અમારી બીજી ડેટ ડિસ્ટિલરી ડિસ્ટ્રિક્ટની ક્રિસમસ ટ્રી લાઇટિંગ હતી: ત્યાં અમે પહેલી વાર સાથે હોટ ચોકલેટ પીધી અને અમારો પહેલો ફોટો પાડ્યો.",
-        caps: ["ડિસ્ટિલરી ડિસ્ટ્રિક્ટ, અમારો પહેલો ફોટો", "", "અમારો પહેલો ડિસેમ્બર, ઝગમગતી લાઇટો સાથે", "ઠંડું નાક, હૂંફાળું દિલ"],
-      },
-    },
-    {
-      side: "right", photos: [41, 6, 8, 45, 61],
-      tags: ["#FirstBigDate", "#FirstMovieDate", "#FirstValentines", "#FirstMuseumDate", "#FirstArtsyDate"],
-      en: {
-        title: "chapter two: our firsts, of so many dates",
-        body: "Our first big date was a seven-course dinner on the last night of 2025. Then came our first movie, our first Valentine's, a museum date full of illusions and our first artsy date — and we're still counting.",
-        caps: ["", "", "", "", ""],
-      },
-      gu: {
-        title: "પ્રકરણ બે: અમારી પહેલી વારની કેટલીય ડેટ્સ",
-        body: "અમારી પહેલી મોટી ડેટ ૨૦૨૫ની છેલ્લી રાત્રે સાત-કોર્સ ડિનર હતી. પછી આવી અમારી પહેલી મૂવી, પહેલો વેલેન્ટાઇન્સ ડે, ભ્રમથી ભરેલી મ્યુઝિયમ ડેટ અને અમારી પહેલી આર્ટી ડેટ — અને ગણતરી હજી ચાલુ છે.",
-        caps: ["", "", "", "", ""],
-      },
-    },
-    {
-      side: "left", photos: [7, 47, 16, 57, 58],
-      tags: [null, null, null, "#FirstNavratri", "#GarbaNights"],
-      en: {
-        title: "chapter three: adventures & garba nights",
-        body: "Niagara Falls, a World Cup trophy sighting, a birthday weekend in Mexico — and then our first Navratri together, our first garba as a couple. Expect the same energy at the Sangeet!",
-        caps: ["Niagara Falls", "World Cup trophy sighting!", "Her birthday weekend in Mexico", "", ""],
-      },
-      gu: {
-        title: "પ્રકરણ ત્રણ: સાહસો અને ગરબાની રાતો",
-        body: "નાયગ્રા ફૉલ્સ, ફિફા વર્લ્ડ કપ ટ્રોફીના દર્શન, મેક્સિકોમાં બર્થડે વીકએન્ડ — અને પછી અમારી સાથેની પહેલી નવરાત્રિ, સાથે રમેલા પહેલા ગરબા. સંગીત સંધ્યામાં પણ આ જ જોશ જોઈએ!",
-        caps: ["નાયગ્રા ફૉલ્સ", "વર્લ્ડ કપ ટ્રોફી દેખાઈ ગઈ!", "મેક્સિકોમાં તેનો બર્થડે વીકએન્ડ", "", ""],
-      },
-    },
-    {
-      side: "right", photos: [32, 36, 26, 38],
-      tags: [null, null, null, "#FirstDiwali"],
-      en: {
-        title: "chapter four: the question",
-        body: "A photoshoot — or so she thought. Somewhere between the lake and the old stone buildings, I got down on one knee with a ring. The next day, we celebrated our first Diwali together. Now we'd love to celebrate with you.",
-        caps: ["The surprise", "She said yes", "Engaged", ""],
-      },
-      gu: {
-        title: "પ્રકરણ ચાર: એ સવાલ",
-        body: "એક ફોટોશૂટ — એવું તે માનતી હતી. તળાવ અને જૂની પથ્થરની ઇમારતો વચ્ચે ક્યાંક, હું વીંટી લઈને એક ઘૂંટણે બેસી ગયો. બીજા જ દિવસે અમે સાથે અમારી પહેલી દિવાળી ઉજવી. હવે ઉજવણી આપની સાથે!",
-        caps: ["સરપ્રાઇઝ", "તેણે હા પાડી", "સગાઈ થઈ ગઈ", ""],
+        title: "અમારી કહાણી, ટૂંકમાં",
+        body: "અમે ટોરોન્ટોમાં એક કોન્સર્ટમાં મળ્યા, એટલે આ કહાણીમાં સંગીત તો હોવાનું જ. 'પહેલી વાર'થી ભરેલા એક વર્ષ પછી — પહેલા ગરબા સહિત — તેણે ઘૂંટણિયે બેસીને પૂછ્યું, અને તેણે હા પાડી.",
+        caps: ["જ્યાંથી બધું શરૂ થયું", "", ""],
       },
     },
   ];
@@ -228,16 +165,12 @@
       ["When and where is the Sangeet?", ["Friday, 22 January 2027, from 6:00 PM at Bhanushali Wadi, Basveshewar Maharaj Marg, Sector 19A, Nerul East, Navi Mumbai."]],
       ["How do I RSVP?", ["Tap any RSVP button on this page. It opens a short Google Form in a new tab.", "You can also call or text Hemang (+91 97693 33516) or Harsh (+91 83698 94213)."]],
       ["How do I find the venue?", ["Tap the Sangeet card (or Map & contacts) for a map and a link to Google Maps."]],
-      ["Will there be dancing?", ["Oh, absolutely. Music, dancing and lots of colour, so wear something you can move in."]],
-      ["I have dietary needs. Who should I tell?", ["Mention it in the RSVP form, or let Hemang or Harsh know, and we'll take care of it."]],
       ["Do you have a hashtag?", ["Yes! Please share your photos and dance videos with #RiyaSangHemang."]],
     ],
     gu: [
       ["સંગીત સંધ્યા ક્યારે અને ક્યાં છે?", ["શુક્રવાર, ૨૨ જાન્યુઆરી ૨૦૨૭, સાંજે ૬:૦૦ વાગ્યાથી, ભાનુશાલી વાડી, બસવેશ્વર મહારાજ માર્ગ, સેક્ટર ૧૯એ, નેરુલ ઈસ્ટ, નવી મુંબઈ."]],
       ["હાજરી કેવી રીતે જણાવું?", ["આ પેજ પર 'હાજરી જણાવો' બટન પર ટૅપ કરો. નવી ટૅબમાં એક નાનું Google ફોર્મ ખૂલશે.", "આપ હેમાંગ (+91 97693 33516) અથવા હર્ષ (+91 83698 94213) ને ફોન કે મેસેજ પણ કરી શકો છો."]],
       ["સ્થળ કેવી રીતે શોધું?", ["નકશો અને Google Maps ની લિંક માટે 'સંગીત સંધ્યા' કાર્ડ (અથવા 'નકશો અને સંપર્ક') પર ટૅપ કરો."]],
-      ["ડાન્સ થશે?", ["ચોક્કસ! સંગીત, નૃત્ય અને ઘણા બધા રંગો — એટલે આરામથી નાચી શકાય એવાં કપડાં પહેરજો."]],
-      ["ભોજન સંબંધિત ખાસ જરૂરિયાત છે. કોને કહું?", ["હાજરીના ફોર્મમાં લખજો, અથવા હેમાંગ કે હર્ષને જણાવજો — અમે ધ્યાન રાખીશું."]],
       ["કોઈ હેશટૅગ છે?", ["હા! આપના ફોટા અને ડાન્સના વીડિયો #RiyaSangHemang સાથે શેર કરજો."]],
     ],
   };
