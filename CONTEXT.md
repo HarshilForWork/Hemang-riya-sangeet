@@ -1,6 +1,6 @@
 # CONTEXT — Sangeet-only site (start here)
 
-A second, **Sangeet-only** invite for Riya & Hemang, for guests invited to the Sangeet but **not** the wedding. Static HTML/CSS/JS, no build step, copied from the main site (`site/`, repo `HarshilForWork/Hemang-riya`, commit `d359100`) on 18 Nov 2026. Not in git and not deployed yet; the plan is likely a second Vercel project.
+A second, **Sangeet-only** invite for Riya & Hemang, for guests invited to the Sangeet but **not** the wedding. Static HTML/CSS/JS, no build step, copied from the main site (`site/`, repo `HarshilForWork/Hemang-riya`, commit `d359100`) on 18 Nov 2026. Repo: `HarshilForWork/Hemang-riya-sangeet` (**private**, branch `main`, remote `git@github-personal:…`, commit as `HarshilForwork` via the repo's local git config, as on the main site). To deploy, import it as a second Vercel project: framework preset **Other**, no build command, output directory = repo root.
 
 ```bash
 cd sangeet-site && python3 -m http.server 5181      # then open http://localhost:5181/?lang=en  (or gu / mix)
@@ -66,5 +66,5 @@ SHOT=/tmp/x.jpg node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en&sho
 - [ ] **A separate Google Form for the Sangeet?** Right now it uses the main site's form, which may ask about the wedding. If guests who aren't invited to the wedding open it, they'll see that. Set `RSVP_FORM` once there's a Sangeet-only form.
 - [ ] Couple to approve the new playful copy (welcome line, chapter titles/bodies, vision line, FAQ "Will there be dancing?", footer).
 - [ ] Gujarati proofreading by a native speaker. All Sangeet copy is new and was machine-written.
-- [ ] Hosting: a second Vercel project (no repo or deploy made yet).
+- [ ] Hosting: import the GitHub repo as a second Vercel project (repo exists; not deployed yet).
 - [ ] If the main site's code gets fixes later, apply them here by hand (this is a copy, not shared code).
