@@ -23,7 +23,7 @@
 
 ## Open items
 
-- [ ] **Put the Sangeet-only Google Form on the site.** The script is ready (`tools/forms/`, see its HOW-TO-RUN.md); Hemang runs it in his Google account and sends the public `/viewform` link. Until then `RSVP_FORM` still points to the main site's form, which **asks about the wedding**, so don't deploy before it's swapped. Then change `RSVP_FORM` in app.js and the 3 fallback hrefs in index.html, bump `?v=N`, and run test-sangeet (it reads the form from app.js; `formSharedWithMainSite` must turn `false`).
+- [x] **Put the Sangeet-only Google Form on the site** (19 Nov 2026). Hemang made it with `tools/forms/CreateSangeetRsvpForm.gs`: `https://docs.google.com/forms/d/e/1FAIpQLScjt8fXO3nJDbcQimEJqLpDoN4Sx8DFivjK2zVznNaiuzPm1w/viewform`. Checked: it opens without a sign-in, English only, no wedding words. It's in `RSVP_FORM` (app.js `v=6`) and the 3 fallback hrefs in index.html; test-sangeet's `formSharedWithMainSite` is `false`.
 - [ ] **Riya's link (`/riya`) wording**: it's the same invite text as the main link ("so come dance with us…", "We cannot wait to dance with you."). Fine if her friends just get the invite; change it only if Riya wants a softer version for people who won't be there.
 - [ ] **Deploy**: import the repo as a second Vercel project (docs/06).
 - [ ] **Couple to approve the new copy** (docs/03 table and the short story paragraph).

@@ -71,4 +71,4 @@ Locally, `python -m http.server` can't do the rewrite: use `python tools/serve.p
 
 ## Caching
 
-`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=5` and `v=5`). Bump N whenever either file changes.
+`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=5` and `v=6`). Bump N whenever either file changes.

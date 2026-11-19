@@ -1,5 +1,8 @@
 # Sangeet RSVP form: how to make it
 
+> **Done 19 Nov 2026.** The form exists: `https://docs.google.com/forms/d/e/1FAIpQLScjt8fXO3nJDbcQimEJqLpDoN4Sx8DFivjK2zVznNaiuzPm1w/viewform`
+> (already in `RSVP_FORM`). Don't run the script again unless you want a second, separate form.
+
 `CreateSangeetRsvpForm.gs` makes **one** Google Form for the Sangeet, in English. At the top it gives the date and time (Friday, 22 January 2027, 6:00 PM onwards), the venue's full address and a Google Maps link, and Hemang and Harsh's numbers. It asks:
 
 1. **Your name**

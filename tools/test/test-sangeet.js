@@ -33,7 +33,12 @@ for (const f of ["index.html", "app.js", "styles.css"]) {
 for (const l of ["en", "gu", "mix"]) {
   $("#langToggle").click(); await wait(60); $(`[data-lang="${l}"]`).click(); await wait(300);
   $$(".faq__item").forEach((i) => i.classList.add("is-open"));
+  // read the page without the live countdown digits: "27 minutes left" in Gujarati (૨૭) isn't the wedding date.
+  // Blanked and restored in one synchronous step, so the countdown never shows the gap
+  const nums = $$(".countdown__num"), live = nums.map((e) => e.textContent);
+  nums.forEach((e) => (e.textContent = ""));
   const text = document.body.innerText + " " + document.body.textContent;
+  nums.forEach((e, i) => (e.textContent = live[i]));
   out.leaks.push(...hits(`page[${l}]`, text));
   if (NO_RSVP) out.rsvpMentions.push(...find(RSVP_WORDS, `page[${l}]`, text), ...formLinks(document).map((h) => `page[${l}] link: ${h}`));
   for (const b of $$("button.dcard[data-overlay]")) {
