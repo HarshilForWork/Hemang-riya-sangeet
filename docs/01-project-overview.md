@@ -37,7 +37,7 @@ Riya & Hemang have two celebrations: the **Sangeet** (Navi Mumbai) and the **wed
 7. **Details**: three cards. Sangeet (pop-up with when/where, map, contacts, RSVP), RSVP (link to the form), #RiyaSangHemang (pop-up).
 8. **FAQ** (4 questions) and "We cannot wait to dance with you.", which is where the page ends (no big centre line, no footer section; trimmed like the short invite).
 
-Floating: language button (EN / ગુજ / Mix), menu bar (R&H · Sangeet · FAQ · RSVP), music notes and hearts when you tap empty space.
+Floating: language button (EN / ગુજ / Mix), menu bar (Sangeet · FAQ · RSVP; no logo or initials), music notes and hearts when you tap empty space.
 
 ## Languages
 

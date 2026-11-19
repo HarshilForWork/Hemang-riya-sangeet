@@ -4,6 +4,7 @@
 
 | Decision | Reason / who |
 |---|---|
+| No R&H / HR monogram anywhere: the nav has no logo, just the links, centred (RSVP alone at the top right on phones). The full names "Riya & Hemang" are fine where they already appear | The couple looked at every logo option (19 Nov 2026) and decided against initials |
 | Separate Sangeet-only site, built from a copy of the main site (18 Nov 2026) | Some guests are invited to the Sangeet only; the main site reveals the wedding |
 | Nothing anywhere hints at the wedding, served code comments included | Guests can view source; an accidental mention would be awkward |
 | Repo is public (created private, switched; Hemang chose to keep it public on 18 Nov 2026) | Hemang's call. The docs discuss the guest split but are never deployed; the served files stay wedding-free |
