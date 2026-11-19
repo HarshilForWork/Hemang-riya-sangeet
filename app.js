@@ -121,15 +121,15 @@
 
   // Who guests can call or WhatsApp. Riya's link sends her guests to her family, the main link to Hemang's.
   const CONTACTS = NO_RSVP ? [
-    { en: "Dharmesh Raval", gu: "ધર્મેશ રાવલ", tel: "+919998870158", display: "+91 99988 70158" },
+    { en: "Mr. Dharmesh Kumar Raval", gu: "શ્રી ધર્મેશકુમાર રાવલ", tel: "+919998870158", display: "+91 99988 70158" },
     { en: "Kunj Raval", gu: "કુંજ રાવલ", tel: "+917016906401", display: "+91 70169 06401" },
   ] : [
     { en: "Hemang", gu: "હેમાંગ", tel: "+919769333516", display: "+91 97693 33516" },
     { en: "Harsh", gu: "હર્ષ", tel: "+918369894213", display: "+91 83698 94213" },
   ];
   if (NO_RSVP) {
-    UI.en.faqLink = "Reach out to Dharmesh or Kunj";
-    UI.gu.faqLink = "ધર્મેશ અથવા કુંજનો સંપર્ક કરો";
+    UI.en.faqLink = "Reach out to Mr. Dharmesh Kumar Raval and Kunj";
+    UI.gu.faqLink = "શ્રી ધર્મેશકુમાર રાવલ અને કુંજનો સંપર્ક કરો";
   }
   const mapsEmbed = (q) => `https://maps.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
   const mapsLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;

@@ -22,7 +22,7 @@ Riya & Hemang have two celebrations: the **Sangeet** (Navi Mumbai) and the **wed
 | Time | 6:00 PM onwards |
 | Venue | Bhanushali Wadi, Nerul |
 | Address | Basveshewar Maharaj Marg, Nerul East, Sector 19A, Nerul, Navi Mumbai, Maharashtra 400706 |
-| Contacts | Hemang +91 97693 33516 · Harsh +91 83698 94213. On Riya's link (`/riya`): Riya's family, Dharmesh Raval (dad) +91 99988 70158 · Kunj Raval (brother) +91 70169 06401 |
+| Contacts | Hemang +91 97693 33516 · Harsh +91 83698 94213. On Riya's link (`/riya`): Riya's family, Mr. Dharmesh Kumar Raval (dad) +91 99988 70158 · Kunj Raval (brother) +91 70169 06401 |
 | RSVP | Google Form (`RSVP_FORM` in app.js), opens in a new tab |
 | Hashtag | #RiyaSangHemang |
 
