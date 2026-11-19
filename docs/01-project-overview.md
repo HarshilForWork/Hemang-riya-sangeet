@@ -33,7 +33,7 @@ Riya & Hemang have two celebrations: the **Sangeet** (Navi Mumbai) and the **wed
 3. "a few moments that led us here…" leading into **our love story**: one short chapter, "our story, the short version", with 3 photos as Instagram prints (1 "Where it all began", 57 #FirstNavratri, 32 #SheSaidYes).
 4. **Countdown**: "so come dance with us…", "january 22, 2027", days/hours/minutes/seconds "until the sangeet". Confetti with music notes, fairy lights along the top.
 5. **The invite card**: a stock dance-party photo in a tilted white print frame, then "The Sangeet", handwritten "an evening of music & dance", the date, the time with a bouncing equalizer, venue, address (links to Google Maps), "bring your dancing shoes!", and **RSVP now** + **Map & contacts** buttons.
-6. **RSVP** callout: "a quick google form, takes a minute" + RSVP now.
+6. **RSVP** callout: "we'd love to have you with us" + RSVP now.
 7. **Details**: three cards. Sangeet (pop-up with when/where, map, contacts, RSVP), RSVP (link to the form), #RiyaSangHemang (pop-up).
 8. **FAQ** (4 questions) and "We cannot wait to dance with you.", which is where the page ends (no big centre line, no footer section; trimmed like the short invite).
 

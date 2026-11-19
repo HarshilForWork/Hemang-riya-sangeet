@@ -24,6 +24,10 @@
   // Every RSVP button opens this Google Form in a new tab (no on-site form on this site).
   const RSVP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSeD4dAbMXjewzgOCTjrC5tQziNs-6SC6AavZFkumD1hL90rlg/viewform";
 
+  // Riya's link (/riya, see vercel.json): the same invite without any RSVP. It drops the RSVP buttons,
+  // the RSVP section, the RSVP card, the pop-up's RSVP button and the RSVP question in the FAQ.
+  const NO_RSVP = location.pathname === "/riya" || location.pathname === "/riya/";
+
   // Static page text, matched to data-i18n="key" in index.html
   const UI = {
     en: {
@@ -37,7 +41,7 @@
       sangeetDate: "Friday, 22 January 2027", time: "6:00 PM onwards",
       sangeetVenue: "Bhanushali Wadi, Nerul", sangeetAddr: "Basveshewar Maharaj Marg, Sector 19A, Nerul East, Navi Mumbai 400706",
       dancingShoes: "bring your dancing shoes!", seeMap: "Map & contacts",
-      rsvpTitle: "RSVP", rsvpNote: "a quick google form, takes a minute", rsvpBtn: "RSVP now",
+      rsvpTitle: "RSVP", rsvpNote: "we'd love to have you with us", rsvpBtn: "RSVP now",
       detailsTitle: "and now some additional details...",
       detailsSub: "Everything you need for one very musical evening.",
       faqTitle: "Questions and answers", faqHelp: "Can't find the answer here?", faqLink: "Reach out to Hemang or Harsh",
@@ -56,7 +60,7 @@
       sangeetDate: "શુક્રવાર, ૨૨ જાન્યુઆરી ૨૦૨૭", time: "સાંજે ૬:૦૦ વાગ્યાથી",
       sangeetVenue: "ભાનુશાલી વાડી, નેરુલ", sangeetAddr: "બસવેશ્વર મહારાજ માર્ગ, સેક્ટર ૧૯એ, નેરુલ ઈસ્ટ, નવી મુંબઈ ૪૦૦૭૦૬",
       dancingShoes: "નાચવાની પૂરી તૈયારી સાથે આવજો!", seeMap: "નકશો અને સંપર્ક",
-      rsvpTitle: "હાજરી જણાવશો", rsvpNote: "એક નાનું Google ફોર્મ, ફક્ત એક મિનિટ", rsvpBtn: "હાજરી જણાવો",
+      rsvpTitle: "હાજરી જણાવશો", rsvpNote: "આપની હાજરીથી અમને ખૂબ આનંદ થશે", rsvpBtn: "હાજરી જણાવો",
       detailsTitle: "અને હવે થોડી વધુ વિગતો...",
       detailsSub: "સંગીતભરી એક સાંજ માટે જરૂરી બધી માહિતી.",
       faqTitle: "પ્રશ્નો અને જવાબો", faqHelp: "અહીં જવાબ ન મળ્યો?", faqLink: "હેમાંગ અથવા હર્ષનો સંપર્ક કરો",
@@ -125,7 +129,7 @@
   // Detail cards. A card with `href` is a link (the RSVP card opens the Google Form); the others open OVERLAYS[id].
   const CARDS = [
     { id: "sangeet", en: ["Sangeet", "Friday, 22 January · Nerul, Navi Mumbai"], gu: ["સંગીત સંધ્યા", "શુક્રવાર, ૨૨ જાન્યુઆરી · નેરુલ, નવી મુંબઈ"] },
-    { id: "rsvp", href: RSVP_FORM, en: ["RSVP", "A quick Google Form. Takes a minute."], gu: ["હાજરી જણાવો", "એક નાનું Google ફોર્મ, ફક્ત એક મિનિટ."] },
+    { id: "rsvp", href: RSVP_FORM, en: ["RSVP", "We'd love to have you with us."], gu: ["હાજરી જણાવો", "આપની હાજરીથી અમને ખૂબ આનંદ થશે."] },
     { id: "hashtag", en: ["#RiyaSangHemang", "Share every moment with us."], gu: ["#RiyaSangHemang", "દરેક પળ અમારી સાથે શેર કરો."] },
   ];
 
@@ -163,13 +167,13 @@
   const FAQ = {
     en: [
       ["When and where is the Sangeet?", ["Friday, 22 January 2027, from 6:00 PM at Bhanushali Wadi, Basveshewar Maharaj Marg, Sector 19A, Nerul East, Navi Mumbai."]],
-      ["How do I RSVP?", ["Tap any RSVP button on this page. It opens a short Google Form in a new tab.", "You can also call or text Hemang (+91 97693 33516) or Harsh (+91 83698 94213)."]],
+      ["How do I RSVP?", ["Tap any RSVP button on this page. It opens a short Google Form in a new tab.", "You can also call or text Hemang (+91 97693 33516) or Harsh (+91 83698 94213)."], "rsvp"],
       ["How do I find the venue?", ["Tap the Sangeet card (or Map & contacts) for a map and a link to Google Maps."]],
       ["Do you have a hashtag?", ["Yes! Please share your photos and dance videos with #RiyaSangHemang."]],
     ],
     gu: [
       ["સંગીત સંધ્યા ક્યારે અને ક્યાં છે?", ["શુક્રવાર, ૨૨ જાન્યુઆરી ૨૦૨૭, સાંજે ૬:૦૦ વાગ્યાથી, ભાનુશાલી વાડી, બસવેશ્વર મહારાજ માર્ગ, સેક્ટર ૧૯એ, નેરુલ ઈસ્ટ, નવી મુંબઈ."]],
-      ["હાજરી કેવી રીતે જણાવું?", ["આ પેજ પર 'હાજરી જણાવો' બટન પર ટૅપ કરો. નવી ટૅબમાં એક નાનું Google ફોર્મ ખૂલશે.", "આપ હેમાંગ (+91 97693 33516) અથવા હર્ષ (+91 83698 94213) ને ફોન કે મેસેજ પણ કરી શકો છો."]],
+      ["હાજરી કેવી રીતે જણાવું?", ["આ પેજ પર 'હાજરી જણાવો' બટન પર ટૅપ કરો. નવી ટૅબમાં એક નાનું Google ફોર્મ ખૂલશે.", "આપ હેમાંગ (+91 97693 33516) અથવા હર્ષ (+91 83698 94213) ને ફોન કે મેસેજ પણ કરી શકો છો."], "rsvp"],
       ["સ્થળ કેવી રીતે શોધું?", ["નકશો અને Google Maps ની લિંક માટે 'સંગીત સંધ્યા' કાર્ડ (અથવા 'નકશો અને સંપર્ક') પર ટૅપ કરો."]],
       ["કોઈ હેશટૅગ છે?", ["હા! આપના ફોટા અને ડાન્સના વીડિયો #RiyaSangHemang સાથે શેર કરજો."]],
     ],
@@ -178,6 +182,15 @@
   // Sangeet: 2027-01-22 18:00 IST (UTC+5:30)
   const COUNTDOWN_TARGET = Date.UTC(2027, 0, 22, 12, 30, 0);
   const img = (n) => `assets/rh/${n}.jpg`;
+
+  // Riya's link: take the RSVP pieces out of the page before anything is measured or animated
+  if (NO_RSVP) {
+    document.documentElement.dataset.rsvp = "off";
+    $("#rsvp-callout-section").remove();
+    $$("a[data-rsvp]").forEach((a) => (a.closest("li") || a).remove());
+  }
+  // FAQ entries tagged "rsvp" are left out on Riya's link (same filter for both languages, so Mix lines up)
+  const faqFor = (l) => FAQ[l].filter((f) => !(NO_RSVP && f[2] === "rsvp"));
 
   // Stable screen height (CSS 100svh). window.innerHeight changes whenever a phone browser's address
   // bar slides in or out while scrolling; using it made the opening animation jump on iPhones.
@@ -742,7 +755,8 @@
   const plusSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>`;
   let gridBuilt = false;
   function buildGrid() {
-    $("#detailsGrid").innerHTML = CARDS.map((c, i) => {
+    const cards = NO_RSVP ? CARDS.filter((c) => c.id !== "rsvp") : CARDS;
+    $("#detailsGrid").innerHTML = cards.map((c, i) => {
       const [title, sub] = c[tl()];
       const accent = mix() && c.gu[0] !== c.en[0] ? `<span class="accent accent--card">${esc(c.gu[0])}</span>` : "";
       return `
@@ -764,9 +778,10 @@
   const chevron = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
   function buildFaq() {
     const list = $("#faqList");
-    list.innerHTML = FAQ[tl()].map(([q, a], i) => `
+    const gu = faqFor("gu");
+    list.innerHTML = faqFor(tl()).map(([q, a], i) => `
       <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${esc(q)}${mix() ? `<small class="accent accent--faq">${esc(FAQ.gu[i][0])}</small>` : ""}</span><i class="faq__icon">${chevron}</i></button>
+        <button class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${esc(q)}${mix() ? `<small class="accent accent--faq">${esc(gu[i][0])}</small>` : ""}</span><i class="faq__icon">${chevron}</i></button>
         <div class="faq__a" id="faq-a-${i}" role="region"><div>${a.map((p) => `<p>${esc(p)}</p>`).join("")}</div></div>
       </div>`).join("");
     $$(".faq__q", list).forEach((b) => b.addEventListener("click", () => {
@@ -841,8 +856,8 @@
             <a class="btn-pill op__mapbtn" href="${mapsLink(o.map)}" target="_blank" rel="noopener">${esc(T("openMaps"))}</a>`;
     }
     if (o.contacts) {
-      h += `<div class="op__sec">${contactHtml()}
-              <a class="btn-pill op__mapbtn" href="${RSVP_FORM}" target="_blank" rel="noopener">${esc(T("rsvpBtn"))}</a></div>`;
+      h += `<div class="op__sec">${contactHtml()}${NO_RSVP ? "" : `
+              <a class="btn-pill op__mapbtn" href="${RSVP_FORM}" target="_blank" rel="noopener">${esc(T("rsvpBtn"))}</a>`}</div>`;
     }
     sheetBody.innerHTML = h;
     requestAnimationFrame(() => applyFocus(sheetBody));
@@ -853,7 +868,7 @@
     if (!t) return;
     e.preventDefault();
     // RSVP buttons are plain links to the Google Form; this catches any leftover data-overlay="rsvp"
-    if (t.dataset.overlay === "rsvp" || !OVERLAYS[t.dataset.overlay]) { window.open(RSVP_FORM, "_blank", "noopener"); return; }
+    if (t.dataset.overlay === "rsvp" || !OVERLAYS[t.dataset.overlay]) { if (!NO_RSVP) window.open(RSVP_FORM, "_blank", "noopener"); return; }
     openSheet(t.dataset.overlay);
   });
 

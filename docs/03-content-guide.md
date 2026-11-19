@@ -13,7 +13,8 @@ All guest-facing text is in `app.js` near the top (and a little in `index.html` 
 | Pop-ups | `OVERLAYS` | `sections: [label, subtitle, body]`; `map` adds a map, `contacts: true` adds the contacts + RSVP |
 | FAQ | `FAQ.en` / `FAQ.gu` | `[question, [paragraphs]]` |
 | Contacts | `CONTACTS` | phone in `tel` (no spaces) and `display` |
-| RSVP form URL | `RSVP_FORM` | used by every RSVP button |
+| RSVP form URL | `RSVP_FORM` | used by every RSVP button (the form itself: `tools/forms/`) |
+| What Riya's link (`/riya`) leaves out | `NO_RSVP` in app.js; FAQ entries tagged `"rsvp"` | every RSVP button, the RSVP section and card, the pop-up's RSVP button, the RSVP FAQ (docs/02) |
 | Countdown | `COUNTDOWN_TARGET` | UTC: 22 Jan 2027 12:30 UTC = 6 PM IST |
 | Meta description, page title | `<head>` of index.html | |
 
@@ -24,7 +25,7 @@ All guest-facing text is in `app.js` near the top (and a little in `index.html` 
 | Welcome | come dance with… / scroll to begin | આવો, ઝૂમીએ સાથે… / શરૂ કરવા સ્ક્રોલ કરો |
 | Countdown | so come dance with us… · january 22, 2027 · until the sangeet | તો આવો, સાથે ઝૂમીએ… · ૨૨ જાન્યુઆરી, ૨૦૨૭ · સંગીત સંધ્યા સુધી |
 | Invite card | an evening of music & dance · bring your dancing shoes! · Map & contacts | સંગીત અને નૃત્યની એક સાંજ · નાચવાની પૂરી તૈયારી સાથે આવજો! · નકશો અને સંપર્ક |
-| RSVP | a quick google form, takes a minute | એક નાનું Google ફોર્મ, ફક્ત એક મિનિટ |
+| RSVP | we'd love to have you with us (card: "We'd love to have you with us.") | આપની હાજરીથી અમને ખૂબ આનંદ થશે |
 | Details sub | Everything you need for one very musical evening. | સંગીતભરી એક સાંજ માટે જરૂરી બધી માહિતી. |
 | FAQ outro | We cannot wait to dance with you. | આપની સાથે ઝૂમવા અમે આતુર છીએ. |
 
@@ -49,11 +50,14 @@ Rules: **no dates on photos**; a tagged photo's caption stays empty (`""`) in bo
 
 When and where is the Sangeet? · How do I RSVP? (Google Form in a new tab, or call/text Hemang or Harsh) · How do I find the venue? (Sangeet card / Map & contacts) · Do you have a hashtag?
 
+On Riya's link (`/riya`) the RSVP question is left out, so it has 3. A new FAQ entry about RSVPs needs the `"rsvp"` tag as its third item, in both `FAQ.en` and `FAQ.gu`, so it's left out there too.
+
 Removed when trimmed (as on the short invite): "Will there be dancing?" and the dietary-needs question. The vision line and the footer quote are gone too.
 
 Deliberately **not** included: anything about other events, travel or stay (they would point to the wedding).
 
 ## Adding something
 
+- Anything new that asks guests to RSVP must be hidden on Riya's link too (docs/02), and `test-sangeet.js` on `/riya` must still report `rsvpMentions: []`.
 - A new card or pop-up: add it to `OVERLAYS` (en + gu) and `CARDS`, plus a stock photo (no faces, **no readable text**) in `assets/stock/` and `CARD_ART`. Then add its id to the overlay loop in `tools/test/test-audit.js`.
 - New Gujarati: the Rasa / Hind Vadodara fonts are already loaded. Caveat has no Gujarati letters, so handwritten lines switch to Hind Vadodara (see `html[lang="gu"] .ev__tagline`).

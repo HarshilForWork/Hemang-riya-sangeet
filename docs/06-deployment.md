@@ -22,11 +22,11 @@
 2. Framework preset **Other**, no build command, output directory = repo root.
 3. Deploy. Likely URL `hemang-riya-sangeet.vercel.app` (or a custom domain). After that, every push to `main` deploys.
 
-`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs never reach the live site (they are readable on GitHub, since the repo is public).
+`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. It also rewrites **`/riya`** to `/index.html` (Riya's link, no RSVP; docs/02). That rewrite has only been tested locally with `tools/serve.py`, so after the first deploy check that `https://<sangeet-url>/riya` shows the page with no RSVP button and that `/riya/` redirects to `/riya`. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs never reach the live site (they are readable on GitHub, since the repo is public).
 
 ## Releasing a change
 
 1. Edit, then bump `?v=N` for `styles.css` / `app.js` in index.html.
-2. Test at phone and desktop (docs/05), **including `test-sangeet.js`**.
+2. Test at phone and desktop (docs/05), **including `test-sangeet.js` on both `/` and `/riya`**.
 3. Commit and push to `main`.
 4. Check the live version: `curl -s https://<sangeet-url>/ | grep -o 'app.js?v=[0-9]*'`.

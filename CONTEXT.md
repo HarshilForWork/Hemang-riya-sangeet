@@ -15,6 +15,7 @@ A single static page (HTML/CSS/JS, no build step) inviting guests to the **Sange
 - Live: not deployed yet (plan: a second Vercel project; see docs/06)
 - Built from: the main site at commit `d359100`, 18 Nov 2026. The code is a copy, not shared.
 - Languages: English, Gujarati, Mix (`?lang=en|gu|mix`)
+- **Two links, one page** (19 Nov 2026): `/` is for Hemang's guests and has RSVP; **`/riya`** is for Riya's friends who get the invite but won't be RSVPing, and has **no RSVP anywhere**. `vercel.json` rewrites `/riya` to the same index.html and `app.js` (`NO_RSVP`) takes the RSVP pieces out (docs/02).
 
 ### The three sibling sites
 
@@ -46,14 +47,15 @@ They are separate copies of the same code; a fix in one doesn't reach the others
 4. **Every visible text has English and Gujarati.** The Gujarati here is machine-written and needs proofreading.
 5. **Bump `?v=N`** on `styles.css` / `app.js` in index.html whenever you change them.
 6. **Commit as `HarshilForwork`** (repo-local config), never the global work identity. Push via `git@github-personal:…`.
-7. Every RSVP button opens the Google Form in `RSVP_FORM` (top of app.js) in a new tab. There is no on-site form.
+7. Every RSVP button opens the Google Form in `RSVP_FORM` (top of app.js) in a new tab. There is no on-site form. **On `/riya` there is no RSVP at all**: anything new that asks for an RSVP must be hidden there too. The form is Sangeet-only (`tools/forms/`), with nothing about any other event.
 8. Bug fixes in shared code don't arrive here automatically; copy them by hand and re-check for wedding mentions.
 
 ## Quick commands
 
 ```bash
-python3 -m http.server 5181          # from the repo root → http://localhost:5181/?lang=en
+python tools/serve.py 5181           # → http://localhost:5181/?lang=en and Riya's link http://localhost:5181/riya?lang=en
 node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-sangeet.js
+node tools/test/cdp-test.mjs "http://localhost:5181/riya?lang=en" 390 664 1 tools/test/test-sangeet.js
 node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-audit.js
 node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 390 664 1 tools/test/test-story.js
 node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 1440 900 0 tools/test/test-hero.js
@@ -67,12 +69,12 @@ node tools/test/cdp-test.mjs "http://localhost:5181/?lang=en" 1440 900 0 tools/t
 | Story | 5 chapters, 30 photos | 1 short chapter, 3 photos (1, 57 #FirstNavratri, 32 #SheSaidYes) |
 | Countdown | Jan 22 & 27, until the wedding | Jan 22, until the sangeet; music-note confetti |
 | Events | Sangeet + Wedding | one invite card with equalizer, "bring your dancing shoes!" |
-| Cards | 6 (incl. Wedding, Travel & Stay, More to come) | 3: Sangeet (map + contacts), RSVP (link), hashtag |
+| Cards | 6 (incl. Wedding, Travel & Stay, More to come) | 3: Sangeet (map + contacts), RSVP (link), hashtag (2 on `/riya`: no RSVP) |
 | Vision line, footer | yes | removed; the page ends with the FAQ's "We cannot wait to dance with you." |
-| FAQ | 7, incl. wedding, trains | 4: when/where, RSVP, finding the venue, hashtag |
+| FAQ | 7, incl. wedding, trains | 4: when/where, RSVP, finding the venue, hashtag (3 on `/riya`: no RSVP) |
 
 Full list: docs/07 and docs/03.
 
-## Current status (18 Nov 2026)
+## Current status (19 Nov 2026)
 
-Built, trimmed (Hemang approved the short version) and tested: all clean at phone and desktop in EN, GU and Mix. Site and docs pushed to GitHub (public), **not deployed**. Waiting on: a Sangeet-only Google Form (it currently shares the main form), the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.
+Built, trimmed (Hemang approved the short version) and tested: all clean at phone and desktop in EN, GU and Mix, on both `/` and `/riya`. **Not deployed**. The Sangeet-only RSVP form script is ready in `tools/forms/`; waiting for Hemang to run it and send the link. **Don't deploy until `RSVP_FORM` is swapped**: it still points to the main site's form, which asks about the wedding. Also waiting on: the couple's approval of the new copy, Gujarati proofreading, Vercel setup, a real iPhone test. Details in docs/07.

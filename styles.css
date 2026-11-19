@@ -753,6 +753,10 @@ a.btn-rsvp { color: var(--on-accent) !important; text-shadow: none !important; }
 
 /* RSVP card is a link out to the Google Form */
 a.dcard { color: #fff; text-decoration: none; }
+/* Riya's link (/riya) has no RSVP card: the two cards keep their usual size, centred */
+@media (min-width: 1101px) {
+  html[data-rsvp="off"] .details__grid { grid-template-columns: repeat(2, 1fr); max-width: 896px; }
+}
 .op__sec .contacts { margin-top: 0; }
 
 @media (max-width: 767px) {
