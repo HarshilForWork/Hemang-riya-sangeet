@@ -12,9 +12,9 @@ All guest-facing text is in `app.js` near the top (and a little in `index.html` 
 | Detail cards | `CARDS` | `href` makes a card a link; card photo from `CARD_ART` |
 | Pop-ups | `OVERLAYS` | `sections: [label, subtitle, body]`; `map` adds a map, `contacts: true` adds the contacts + RSVP |
 | FAQ | `FAQ.en` / `FAQ.gu` | `[question, [paragraphs]]` |
-| Contacts | `CONTACTS` | phone in `tel` (no spaces) and `display` |
+| Contacts | `CONTACTS` | phone in `tel` (no spaces) and `display`. Two lists: Riya's family on `/riya` (Dharmesh Raval +91 99988 70158, Kunj Raval +91 70169 06401), Hemang and Harsh on `/`. The FAQ link's text is `UI.*.faqLink` (set again for `/riya` under `CONTACTS`) and it calls the first contact |
 | RSVP form URL | `RSVP_FORM` | used by every RSVP button (the form itself: `tools/forms/`) |
-| What Riya's link (`/riya`) leaves out | `NO_RSVP` in app.js; FAQ entries tagged `"rsvp"` | every RSVP button, the RSVP section and card, the pop-up's RSVP button, the RSVP FAQ (docs/02) |
+| What Riya's link (`/riya`) leaves out | `NO_RSVP` in app.js; FAQ entries tagged `"rsvp"` | every RSVP button, the RSVP section and card, the pop-up's RSVP button, the RSVP FAQ (docs/02); it also swaps the contacts to Riya's family |
 | Countdown | `COUNTDOWN_TARGET` | UTC: 22 Jan 2027 12:30 UTC = 6 PM IST |
 | Meta description, page title | `<head>` of index.html | |
 

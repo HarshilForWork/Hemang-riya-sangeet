@@ -68,6 +68,27 @@ out.sangeetPopup = await (async () => {
   return r;
 })();
 
+// Contacts: Riya's link gives her family (Dharmesh and Kunj Raval), the main link Hemang and Harsh.
+// Neither link may show the other family's names or numbers (page, FAQ link, Sangeet pop-up, any link).
+const HEMANG_SIDE = /9769333516|97693 33516|8369894213|83698 94213|Hemang or Harsh|હેમાંગ અથવા હર્ષ/;
+const RIYA_SIDE = /9998870158|99988 70158|7016906401|70169 06401|Dharmesh|Kunj|ધર્મેશ|કુંજ/;
+out.contacts = {};
+out.wrongContacts = [];
+for (const l of ["en", "gu", "mix"]) {
+  $("#langToggle").click(); await wait(60); $(`[data-lang="${l}"]`).click(); await wait(300);
+  $$(".faq__item").forEach((i) => i.classList.add("is-open"));
+  $('button.dcard[data-overlay="sangeet"]').click(); await wait(500);
+  const link = $(".faq__link");
+  out.contacts[l] = {
+    popup: $$("#sheet .contact").map((c) => `${$(".contact__name", c).textContent} ${$(".contact__num", c).textContent}`),
+    faqLink: `${link.textContent} -> ${link.getAttribute("href")}`,
+  };
+  const all = [document.body.innerText, $("#sheet").textContent, ...$$("a").map((a) => a.href)].join(" ");
+  out.wrongContacts.push(...find(NO_RSVP ? HEMANG_SIDE : RIYA_SIDE, `[${l}]`, all));
+  $(".sheet__x").click(); await wait(350);
+}
+$("#langToggle").click(); await wait(60); $('[data-lang="en"]').click(); await wait(200);
+
 // countdown: days left must match 22 Jan 2027 18:00 IST
 const target = Date.UTC(2027, 0, 22, 12, 30);
 out.countdownDays = +$("#cdD").textContent;

@@ -119,10 +119,18 @@
   ];
   const ROTATIONS = [-2.5, 1.8, -1.2, 2.2, -1.6];
 
-  const CONTACTS = [
+  // Who guests can call or WhatsApp. Riya's link sends her guests to her family, the main link to Hemang's.
+  const CONTACTS = NO_RSVP ? [
+    { en: "Dharmesh Raval", gu: "ધર્મેશ રાવલ", tel: "+919998870158", display: "+91 99988 70158" },
+    { en: "Kunj Raval", gu: "કુંજ રાવલ", tel: "+917016906401", display: "+91 70169 06401" },
+  ] : [
     { en: "Hemang", gu: "હેમાંગ", tel: "+919769333516", display: "+91 97693 33516" },
     { en: "Harsh", gu: "હર્ષ", tel: "+918369894213", display: "+91 83698 94213" },
   ];
+  if (NO_RSVP) {
+    UI.en.faqLink = "Reach out to Dharmesh or Kunj";
+    UI.gu.faqLink = "ધર્મેશ અથવા કુંજનો સંપર્ક કરો";
+  }
   const mapsEmbed = (q) => `https://maps.google.com/maps?q=${encodeURIComponent(q)}&output=embed`;
   const mapsLink = (q) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
@@ -189,6 +197,8 @@
     $("#rsvp-callout-section").remove();
     $$("a[data-rsvp]").forEach((a) => (a.closest("li") || a).remove());
   }
+  // "Reach out to …" under the FAQ title calls the first contact
+  $$(".faq__link").forEach((a) => (a.href = `tel:${CONTACTS[0].tel}`));
   // FAQ entries tagged "rsvp" are left out on Riya's link (same filter for both languages, so Mix lines up)
   const faqFor = (l) => FAQ[l].filter((f) => !(NO_RSVP && f[2] === "rsvp"));
 

@@ -25,7 +25,7 @@ tools/forms/        Apps Script that makes the Sangeet-only RSVP Google Form, an
 | Block | What it holds |
 |---|---|
 | Content constants | `RSVP_FORM` (Google Form URL), `NO_RSVP` (true on Riya's link, `/riya`), `UI` (page text, en/gu), `ACCENT` (Gujarati lines for Mix), `PHOTOS` (size + face box per photo), `STORY`, `ROTATIONS`, `CONTACTS`, `CARDS`, `OVERLAYS`, `FAQ`, `COUNTDOWN_TARGET` |
-| Riya's link | if `NO_RSVP`: sets `html[data-rsvp="off"]`, removes `#rsvp-callout-section` and every `a[data-rsvp]` (its `<li>` in the nav), before anything is measured. `faqFor(l)` drops FAQ entries tagged `"rsvp"` |
+| Riya's link | if `NO_RSVP`: sets `html[data-rsvp="off"]`, removes `#rsvp-callout-section` and every `a[data-rsvp]` (its `<li>` in the nav), before anything is measured. `faqFor(l)` drops FAQ entries tagged `"rsvp"`. `CONTACTS` and `UI.*.faqLink` switch to Riya's family; the FAQ's "Reach out to…" link calls `CONTACTS[0]` on both links |
 | Viewport probes | `VH()` = 100svh, `VHL()` = 100lvh (never use `window.innerHeight`; see the main site's docs/07) |
 | Photo placement | `placeFocus(img, n, boxW, boxH)`, `applyFocus(root)`: face-aware cover with a blurred fill, never cutting a face |
 | Language state | `lang` (`en`/`gu`/`mix`), `tl()`, `mix()`, `T(key)`, `num()` (Gujarati digits) |
@@ -51,12 +51,12 @@ There is **no on-site form**. RSVP controls are plain links (`<a data-rsvp href=
 
 ### Two links, one page
 
-| Link | For | RSVP |
-|---|---|---|
-| `/` | Hemang's Sangeet guests | yes: the Sangeet-only Google Form |
-| `/riya` | Riya's friends who get the invite but won't be RSVPing | none at all |
+| Link | For | RSVP | Contacts (Sangeet pop-up, FAQ link) |
+|---|---|---|---|
+| `/` | Hemang's Sangeet guests | yes: the Sangeet-only Google Form | Hemang, Harsh |
+| `/riya` | Riya's friends who get the invite but won't be RSVPing | none at all | Riya's family: Dharmesh Raval (dad), Kunj Raval (brother) |
 
-Both are the same `index.html`. `vercel.json` rewrites `/riya` to `/` (not `/index.html`, which `cleanUrls` redirects, so the rewrite would 404; docs/06) (`trailingSlash: false` sends `/riya/` to `/riya`, so the relative asset paths still work). `app.js` checks `location.pathname` and, on `/riya`, removes the nav RSVP button, the invite card's "RSVP now", the RSVP callout section, the RSVP detail card, the RSVP button in the Sangeet pop-up (contacts and map stay) and the FAQ's "How do I RSVP?". The two remaining detail cards sit in two centred columns on desktop (`html[data-rsvp="off"] .details__grid`). On phones the nav is hidden on `/riya` (`html[data-rsvp="off"] .nav`): the phone nav shows only RSVP, floating with no pill, so without RSVP it would be a bare "FAQ" over the page. Desktop keeps Sangeet and FAQ. Everything else (story, countdown, wording) is identical. `?lang=` works on both. The page source still contains the RSVP links (the no-JS fallback); that's harmless.
+Both are the same `index.html`. `vercel.json` rewrites `/riya` to `/` (not `/index.html`, which `cleanUrls` redirects, so the rewrite would 404; docs/06) (`trailingSlash: false` sends `/riya/` to `/riya`, so the relative asset paths still work). `app.js` checks `location.pathname` and, on `/riya`, removes the nav RSVP button, the invite card's "RSVP now", the RSVP callout section, the RSVP detail card, the RSVP button in the Sangeet pop-up (contacts and map stay) and the FAQ's "How do I RSVP?". It also swaps the contacts (19 Nov 2026): the Sangeet pop-up lists Dharmesh Raval and Kunj Raval, and the FAQ link reads "Reach out to Dharmesh or Kunj" (ધર્મેશ અથવા કુંજનો સંપર્ક કરો) and calls Dharmesh, so Riya's guests reach her family, not Hemang's. The two remaining detail cards sit in two centred columns on desktop (`html[data-rsvp="off"] .details__grid`). On phones the nav is hidden on `/riya` (`html[data-rsvp="off"] .nav`): the phone nav shows only RSVP, floating with no pill, so without RSVP it would be a bare "FAQ" over the page. Desktop keeps Sangeet and FAQ. Everything else (story, countdown, wording) is identical. `?lang=` works on both. The page source still contains the RSVP links (the no-JS fallback); that's harmless.
 
 Locally, `python -m http.server` can't do the rewrite: use `python tools/serve.py` (same thing plus `/riya`).
 
@@ -71,4 +71,4 @@ Locally, `python -m http.server` can't do the rewrite: use `python tools/serve.p
 
 ## Caching
 
-`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=5` and `v=6`). Bump N whenever either file changes.
+`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=5` and `v=7`). Bump N whenever either file changes.
