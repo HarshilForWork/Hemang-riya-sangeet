@@ -17,15 +17,29 @@ A single static page (HTML/CSS/JS, no build step) inviting guests to the **Sange
 - Languages: English, Gujarati, Mix (`?lang=en|gu|mix`)
 - **Two links, one page** (19 Nov 2026): `/` is for Hemang's guests and has RSVP; **`/riya`** is for Riya's friends who get the invite but won't be RSVPing, and has **no RSVP anywhere**. `vercel.json` rewrites `/riya` to the same index.html and `app.js` (`NO_RSVP`) takes the RSVP pieces out (docs/02).
 
-### The three sibling sites
+## Who gets which link (three sites, four links)
 
-They are separate copies of the same code; a fix in one doesn't reach the others.
+The couple sends each group of guests **one** link. There are **three separate copies** of the code; each is its own git repo with its own `CONTEXT.md`. This one is the Sangeet site (rows 3 and 4).
 
-| Folder | Repo | Live | For |
-|---|---|---|---|
-| `site/` | `HarshilForWork/Hemang-riya` | hemang-riya.vercel.app | everyone invited to both events (full story) |
-| `lite-site/` | `HarshilForWork/riya-hemang-invite` | riya-hemang-invite.vercel.app | the short invite, both events, less to read |
-| `sangeet-site/` (this) | `HarshilForWork/Hemang-riya-sangeet` (public) | not yet | **Sangeet-only** guests |
+| Guests | Link to send | What they see | RSVP | Repo · folder |
+|---|---|---|---|---|
+| **Close guests**, invited to both events | https://hemang-riya.vercel.app | The whole story (5 chapters, 30 photos), Sangeet + Wedding, Travel & Stay | The couple's main Google Form (asks about the wedding) | `HarshilForWork/Hemang-riya` (public) · `site/` |
+| **Most guests**, invited to both events | https://riya-hemang-invite.vercel.app | The same look and both events (Travel & Stay too), much less to read: one-chapter story, 3 FAQs | The same main Google Form | `HarshilForWork/riya-hemang-invite` (private) · `lite-site/` |
+| **Sangeet-only guests** (Hemang's friends) | Sangeet site, `/` (not deployed yet) | Only the Sangeet (Fri 22 Jan 2027, Nerul, Navi Mumbai). **Never the wedding** | Its own Sangeet-only Google Form, in English: name, coming?, how many (script in `tools/forms/`; the form isn't created yet) | `HarshilForWork/Hemang-riya-sangeet` (public) · `sangeet-site/` |
+| **Riya's friends** who won't come but should still get the invite | Sangeet site, **`/riya`** (not deployed yet) | The same Sangeet page | **None**: no RSVP button, section, card or FAQ | Same repo and page; the path switches RSVP off |
+
+- **Never send a Sangeet-only guest (rows 3–4) either of the first two links**: they show the wedding. Never put wedding details on this site.
+- The copies don't share code. A fix or content change (RSVP link, contacts, photos, wording, bug fixes) reaches only the site you change. Ask which sites it applies to, then update, test and push each one.
+- Folders: on Hemang's Mac the repos sit side by side as `site/`, `lite-site/`, `sangeet-site/` (the docs use these names); on the Windows laptop they are `Hemang-riya/`, `riya-hemang-invite/`, `Hemang-riya-sangeet/`.
+
+### Working on another laptop
+
+1. Clone all three side by side, with the Mac folder names: `git clone https://github.com/HarshilForWork/Hemang-riya.git site`, `git clone https://github.com/HarshilForWork/riya-hemang-invite.git lite-site`, `git clone https://github.com/HarshilForWork/Hemang-riya-sangeet.git sangeet-site` (or use the SSH alias `github-personal` where it's set up). The short invite is private, so sign in to GitHub as HarshilForWork.
+2. In each repo, set the commit identity locally (never the global work identity): `git config user.name HarshilForwork` and `git config user.email "$(git log -1 --format=%ae)"` (the same email as the earlier commits).
+3. Run `git pull` before starting: the sites have been edited from more than one laptop (19 Nov 2026).
+4. Preview this site with `python tools/serve.py 5181` (plain `http.server` can't serve `/riya`). The test harness finds Chrome on macOS, Windows and Linux; set `CHROME=/path/to/chrome` if it's somewhere else.
+5. The main RSVP form's Apps Script (`rsvp-form/CreateRsvpForms.gs`) is **not in any repo**; it sits next to the sites on the Windows laptop. This site's form script is in `tools/forms/`.
+6. **Next steps here**: Hemang runs `tools/forms/CreateSangeetRsvpForm.gs` (see its HOW-TO-RUN.md) and sends the public `/viewform` link. Then put it in `RSVP_FORM` (app.js) and the 3 fallback RSVP hrefs in index.html, bump `?v`, run the tests on `/` and `/riya` (`formSharedWithMainSite` must turn `false`), and only then set up Vercel (docs/06) and test both links live.
 
 ## Documentation map
 
@@ -46,7 +60,7 @@ They are separate copies of the same code; a fix in one doesn't reach the others
 3. **Test at phone size too** (390×664 and 1440×900 at least), not just desktop (docs/05).
 4. **Every visible text has English and Gujarati.** The Gujarati here is machine-written and needs proofreading.
 5. **Bump `?v=N`** on `styles.css` / `app.js` in index.html whenever you change them.
-6. **Commit as `HarshilForwork`** (repo-local config), never the global work identity. Push via `git@github-personal:…`.
+6. **Commit as `HarshilForwork`** (repo-local config), never the global work identity. Push via `git@github-personal:…` on Hemang's Mac, or HTTPS (`https://github.com/HarshilForWork/…`) where that alias isn't set up.
 7. Every RSVP button opens the Google Form in `RSVP_FORM` (top of app.js) in a new tab. There is no on-site form. **On `/riya` there is no RSVP at all**: anything new that asks for an RSVP must be hidden there too. The form is Sangeet-only (`tools/forms/`), with nothing about any other event.
 8. Bug fixes in shared code don't arrive here automatically; copy them by hand and re-check for wedding mentions.
 

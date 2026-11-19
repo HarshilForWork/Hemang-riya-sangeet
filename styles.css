@@ -757,6 +757,11 @@ a.dcard { color: #fff; text-decoration: none; }
 @media (min-width: 1101px) {
   html[data-rsvp="off"] .details__grid { grid-template-columns: repeat(2, 1fr); max-width: 896px; }
 }
+/* On phones the nav shows only RSVP, floating with no pill. /riya has no RSVP, so it would be a bare
+   "FAQ" over the page: hide the nav there (desktop keeps Sangeet and FAQ) */
+@media (max-width: 767px) {
+  html[data-rsvp="off"] .nav { display: none; }
+}
 .op__sec .contacts { margin-top: 0; }
 
 @media (max-width: 767px) {

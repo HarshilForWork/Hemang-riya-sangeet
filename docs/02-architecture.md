@@ -56,7 +56,7 @@ There is **no on-site form**. RSVP controls are plain links (`<a data-rsvp href=
 | `/` | Hemang's Sangeet guests | yes: the Sangeet-only Google Form |
 | `/riya` | Riya's friends who get the invite but won't be RSVPing | none at all |
 
-Both are the same `index.html`. `vercel.json` rewrites `/riya` to `/index.html` (`trailingSlash: false` sends `/riya/` to `/riya`, so the relative asset paths still work). `app.js` checks `location.pathname` and, on `/riya`, removes the nav RSVP button, the invite card's "RSVP now", the RSVP callout section, the RSVP detail card, the RSVP button in the Sangeet pop-up (contacts and map stay) and the FAQ's "How do I RSVP?". The two remaining detail cards sit in two centred columns on desktop (`html[data-rsvp="off"] .details__grid`). Everything else (story, countdown, wording) is identical. `?lang=` works on both. The page source still contains the RSVP links (the no-JS fallback); that's harmless.
+Both are the same `index.html`. `vercel.json` rewrites `/riya` to `/index.html` (`trailingSlash: false` sends `/riya/` to `/riya`, so the relative asset paths still work). `app.js` checks `location.pathname` and, on `/riya`, removes the nav RSVP button, the invite card's "RSVP now", the RSVP callout section, the RSVP detail card, the RSVP button in the Sangeet pop-up (contacts and map stay) and the FAQ's "How do I RSVP?". The two remaining detail cards sit in two centred columns on desktop (`html[data-rsvp="off"] .details__grid`). On phones the nav is hidden on `/riya` (`html[data-rsvp="off"] .nav`): the phone nav shows only RSVP, floating with no pill, so without RSVP it would be a bare "FAQ" over the page. Desktop keeps Sangeet and FAQ. Everything else (story, countdown, wording) is identical. `?lang=` works on both. The page source still contains the RSVP links (the no-JS fallback); that's harmless.
 
 Locally, `python -m http.server` can't do the rewrite: use `python tools/serve.py` (same thing plus `/riya`).
 
@@ -71,4 +71,4 @@ Locally, `python -m http.server` can't do the rewrite: use `python tools/serve.p
 
 ## Caching
 
-`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=3` and `v=5`). Bump N whenever either file changes.
+`index.html` loads `styles.css?v=N` and `app.js?v=N` (now `v=5` and `v=5`). Bump N whenever either file changes.
