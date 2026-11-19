@@ -25,7 +25,7 @@
 
 - [x] **Put the Sangeet-only Google Form on the site** (19 Nov 2026). Hemang made it with `tools/forms/CreateSangeetRsvpForm.gs`: `https://docs.google.com/forms/d/e/1FAIpQLScjt8fXO3nJDbcQimEJqLpDoN4Sx8DFivjK2zVznNaiuzPm1w/viewform`. Checked: it opens without a sign-in, English only, no wedding words. It's in `RSVP_FORM` (app.js `v=6`) and the 3 fallback hrefs in index.html; test-sangeet's `formSharedWithMainSite` is `false`.
 - [ ] **Riya's link (`/riya`) wording**: it's the same invite text as the main link ("so come dance with us…", "We cannot wait to dance with you."). Fine if her friends just get the invite; change it only if Riya wants a softer version for people who won't be there.
-- [ ] **Deploy**: import the repo as a second Vercel project (docs/06).
+- [x] **Deploy** (19 Nov 2026): https://heya-sangeet.vercel.app, a second Vercel project linked to GitHub (docs/06). The first deploy's `/riya` was a 404 (the rewrite pointed at `/index.html`); fixed to `/`.
 - [ ] **Couple to approve the new copy** (docs/03 table and the short story paragraph).
 - [ ] **Gujarati proofreading** by a native speaker (all `gu`, `ACCENT`).
 - [ ] **Real iPhone test** in Safari (opening animation, the lights, the pop-up).

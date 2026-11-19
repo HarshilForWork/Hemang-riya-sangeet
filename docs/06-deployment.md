@@ -16,17 +16,15 @@
 - Commit messages end with a `Co-Authored-By:` line when written with Claude.
 - The local copy currently lives in a scratch folder of a Claude session (next to the main site's `site/`). If that session is deleted the folder goes too, so GitHub is the source of truth. Clone it somewhere permanent for further work.
 
-## Vercel (not set up yet)
+## Vercel
 
-1. vercel.com/new → import `HarshilForWork/Hemang-riya-sangeet` (grant the Vercel GitHub app access to the repo if it isn't listed).
-2. Framework preset **Other**, no build command, output directory = repo root.
-3. Deploy. Likely URL `hemang-riya-sangeet.vercel.app` (or a custom domain). After that, every push to `main` deploys.
+Live at **https://heya-sangeet.vercel.app** (Riya's link: **https://heya-sangeet.vercel.app/riya**). Hemang imported the repo into Vercel from his other laptop on 19 Nov 2026. The project is linked to GitHub, so **every push to `main` deploys by itself**: don't pull and re-deploy by hand, and don't use the `vercel` CLI, which would upload whatever files that laptop has (an old copy could bring back the main site's wedding form).
 
-`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. It also rewrites **`/riya`** to `/index.html` (Riya's link, no RSVP; docs/02). That rewrite has only been tested locally with `tools/serve.py`, so after the first deploy check that `https://<sangeet-url>/riya` shows the page with no RSVP button and that `/riya/` redirects to `/riya`. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs never reach the live site (they are readable on GitHub, since the repo is public).
+`vercel.json` (copied from the main site): assets cached for a day with a week's stale-while-revalidate, `X-Robots-Tag: noindex, nofollow`, `nosniff`, a referrer policy and clean URLs. It also rewrites **`/riya`** to **`/`** (Riya's link, no RSVP; docs/02). The destination must be `/`, not `/index.html`: with `cleanUrls`, Vercel redirects `/index.html` to `/`, and a rewrite that lands on a redirect is a 404 (that's what the first deploy did, 19 Nov 2026). `tools/serve.py` can't catch this, so after changing `vercel.json` check `https://heya-sangeet.vercel.app/riya` live: the page, with no RSVP button, and `/riya/` redirecting to `/riya`. `.vercelignore` keeps `docs/`, `tools/`, `*.md` and `.claude/` out of the deployment, so the docs never reach the live site (they are readable on GitHub, since the repo is public).
 
 ## Releasing a change
 
 1. Edit, then bump `?v=N` for `styles.css` / `app.js` in index.html.
 2. Test at phone and desktop (docs/05), **including `test-sangeet.js` on both `/` and `/riya`**.
 3. Commit and push to `main`.
-4. Check the live version: `curl -s https://<sangeet-url>/ | grep -o 'app.js?v=[0-9]*'`.
+4. Check the live version: `curl -s https://heya-sangeet.vercel.app/ | grep -o 'app.js?v=[0-9]*'`, and run `test-sangeet.js` against `https://heya-sangeet.vercel.app/?lang=en` and `/riya?lang=en`.
