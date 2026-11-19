@@ -17,20 +17,21 @@ A single static page (HTML/CSS/JS, no build step) inviting guests to the **Sange
 - Languages: English, Gujarati, Mix (`?lang=en|gu|mix`)
 - **Two links, one page** (19 Nov 2026): `/` is for Hemang's guests and has RSVP; **`/riya`** is for Riya's friends who get the invite but won't be RSVPing, and has **no RSVP anywhere**; its contacts are **Riya's family** (Dharmesh Raval, her dad, and Kunj Raval, her brother) instead of Hemang and Harsh. `vercel.json` rewrites `/riya` to the same index.html and `app.js` (`NO_RSVP`) takes the RSVP pieces out and swaps the contacts (docs/02).
 
-## Who gets which link (three sites, five links)
+## Who gets which link (three sites, six links)
 
-The couple sends each group of guests **one** link. There are **three separate copies** of the code; each is its own git repo with its own `CONTEXT.md`. This one is the Sangeet site (rows 4 and 5).
+The couple sends each group of guests **one** link. There are **three separate copies** of the code; each is its own git repo with its own `CONTEXT.md`. This one is the Sangeet site (rows 5 and 6).
 
 | Guests | Link to send | What they see | RSVP | Repo · folder |
 |---|---|---|---|---|
 | **Close guests**, invited to both events | https://hemang-riya.vercel.app | The whole story (5 chapters, 30 photos), Sangeet + Wedding, Travel & Stay | The couple's main Google Form (asks about the wedding) | `HarshilForWork/Hemang-riya` (public) · `site/` |
 | **Most guests**, invited to both events | https://riya-hemang-invite.vercel.app | The same look and both events (Travel & Stay too), much less to read: one-chapter story, 3 FAQs | The same main Google Form | `HarshilForWork/riya-hemang-invite` (private) · `lite-site/` |
 | **Riya's guests**, invited to both events | **https://riya-hemang-invite.vercel.app/riya** | The same short invite, but the contacts (the FAQ's "Reach out to…" link and the RSVP answer) are Riya's family: Dharmesh Raval (her dad) and Kunj Raval (her brother) | The same main Google Form (its description and thank-you still name Hemang and Harsh) | Same repo and page; the path switches the contacts |
+| **Riya's guests** who get the invite with no RSVP | **https://riya-hemang-invite.vercel.app/riyaguests** | The same short invite as `/riya` (both events, Travel & Stay, the Ravals first in the countdown line), but **no contacts at all**: no "Reach out to…" link, no names or numbers | **None**: no RSVP button, section, card or FAQ | Same repo and page; the path switches RSVP and the contacts off |
 | **Sangeet-only guests** (Hemang's friends) | https://heya-sangeet.vercel.app | Only the Sangeet (Fri 22 Jan 2027, Nerul, Navi Mumbai). **Never the wedding** | Its own Sangeet-only Google Form, in English: name, coming?, how many (made 19 Nov 2026 from the script in `tools/forms/`) | `HarshilForWork/Hemang-riya-sangeet` (public) · `sangeet-site/` |
 | **Riya's friends** who won't come but should still get the invite | **https://heya-sangeet.vercel.app/riya** | The same Sangeet page, with Riya's family as the contacts (Dharmesh and Kunj Raval) | **None**: no RSVP button, section, card or FAQ | Same repo and page; the path switches RSVP off and the contacts |
 
-- **Contacts** (19 Nov 2026): the `/` links give Hemang (+91 97693 33516) and Harsh (+91 83698 94213). Both `/riya` links (rows 3 and 5) give Riya's family instead, Dharmesh Raval (her dad, +91 99988 70158) and Kunj Raval (her brother, +91 70169 06401), so her guests reach her family and Hemang's guests reach his. Out of respect her dad is always written **Mr. Dharmesh Kumar Raval** (શ્રી ધર્મેશકુમાર રાવલ) on the sites, and the FAQ link reads "Reach out to Mr. Dharmesh Kumar Raval and Kunj" (Hemang, 19 Nov 2026).
-- **Never send a Sangeet-only guest (rows 4–5) any of the first three links**: they show the wedding. Never put wedding details on this site.
+- **Contacts** (19 Nov 2026): the `/` links give Hemang (+91 97693 33516) and Harsh (+91 83698 94213). Both `/riya` links (rows 3 and 6) give Riya's family instead, Dharmesh Raval (her dad, +91 99988 70158) and Kunj Raval (her brother, +91 70169 06401), so her guests reach her family and Hemang's guests reach his. Out of respect her dad is always written **Mr. Dharmesh Kumar Raval** (શ્રી ધર્મેશકુમાર રાવલ) on the sites, and the FAQ link reads "Reach out to Mr. Dharmesh Kumar Raval and Kunj" (Hemang, 19 Nov 2026). `/riyaguests` (row 4) names no one: no contacts, no RSVP.
+- **Never send a Sangeet-only guest (rows 5–6) any of the first four links**: they show the wedding. Never put wedding details on this site.
 - The copies don't share code. A fix or content change (RSVP link, contacts, photos, wording, bug fixes) reaches only the site you change. Ask which sites it applies to, then update, test and push each one.
 - Folders: on Hemang's Mac the repos sit side by side as `site/`, `lite-site/`, `sangeet-site/` (the docs use these names); on the Windows laptop they are `Hemang-riya/`, `riya-hemang-invite/`, `Hemang-riya-sangeet/`.
 
