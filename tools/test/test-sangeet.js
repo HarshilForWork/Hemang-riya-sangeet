@@ -8,8 +8,9 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const NO_RSVP = location.pathname === "/riya";
 const SRC = await (await fetch("app.js", { cache: "no-store" })).text();
 const FORM = SRC.match(/const RSVP_FORM = "([^"]+)"/)[1];
-// the form the main site uses (it asks about the wedding): the Sangeet site must not link it
-const MAIN_SITE_FORM_ID = "1FAIpQLSeD4dAbMXjewzgOCTjrC5tQziNs-6SC6AavZFkumD1hL90rlg";
+// the forms the wedding sites use (they ask about the wedding): the Sangeet site must not link them
+// (the English + Gujarati form since 22 Nov 2026, and the one before it)
+const MAIN_SITE_FORM_IDS = ["1FAIpQLSd13AnCmbMxVDlggEo_ayRcUrIvbRRnLAtqrAqA1T7W45hUyw", "1FAIpQLSeD4dAbMXjewzgOCTjrC5tQziNs-6SC6AavZFkumD1hL90rlg"];
 // words that would reveal the wedding: English, Gujarati, the city, its date, its venue, travel/stay
 const FORBIDDEN = /wedding|marriage|mandap|nadiad|fatepur|fatehpura|aavishkaar|gujarat\b|\b27\s*jan|jan(uary)?\s*27|travel|train|irctc|accommodation|lagna|લગ્ન|નડિયાદ|મંડપ|(?<!૨૦)૨૭|આવિષ્કાર|ગુજરાત|ટ્રેન|મુસાફરી|રોકાણ|પ્રવાસ/i;
 // on Riya's link: anything that asks for an RSVP
@@ -55,7 +56,7 @@ const rsvpLinks = $$("a").filter((a) => /rsvp|હાજરી/i.test(a.textConte
 out.rsvpLinks = rsvpLinks.length;
 out.rsvpLinksWrong = NO_RSVP ? [] : rsvpLinks.filter((a) => a.href !== FORM || a.target !== "_blank" || !/noopener/.test(a.rel)).map((a) => a.outerHTML.slice(0, 90));
 out.rsvpSection = !!$("#rsvp-callout-section");
-out.formSharedWithMainSite = !NO_RSVP && FORM.includes(MAIN_SITE_FORM_ID);
+out.formSharedWithMainSite = !NO_RSVP && MAIN_SITE_FORM_IDS.some((id) => FORM.includes(id));
 out.rsvpOverlayButtons = $$('[data-overlay="rsvp"]').length;
 out.onSiteForm = !!$("form");
 out.faqSection = !!$("#faq"); // removed 22 Nov 2026: must be false

@@ -22,7 +22,8 @@
   // language (see CONTEXT.md before adding anything).
 
   // Every RSVP button opens this Google Form in a new tab (no on-site form on this site).
-  const RSVP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScjt8fXO3nJDbcQimEJqLpDoN4Sx8DFivjK2zVznNaiuzPm1w/viewform";
+  // Remade without the hashtag on 22 Nov 2026 (new link); the 19 Nov form is no longer linked.
+  const RSVP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScd3PIf18YT-ljhGqS6Zry0fNpumRfnwrU03nFZvrlPevr2yQ/viewform";
 
   // Riya's link (/riya, see vercel.json): the same invite without any RSVP. It drops the RSVP buttons,
   // the RSVP section, the RSVP card, and the pop-up's RSVP button.
