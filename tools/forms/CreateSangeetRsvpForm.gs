@@ -9,6 +9,10 @@
  *   showSangeetFormLinks    prints the links again
  *   countSangeetRsvps       prints how many said yes / no, and how many
  *                           people are coming in total
+ *   removeHashtagFromSangeetForm
+ *                           takes #RiyaSangHemang out of the LIVE form's
+ *                           description and thank-you (same link, answers
+ *                           kept). Run it in the project that made the form.
  *
  * The form asks three things:
  *   1. Your name
@@ -45,9 +49,7 @@ var TEXT = {
     'Map: ' + MAP_LINK,
     '',
     'It would be lovely to have you with us as we celebrate our Sangeet. Please let us know below if you can make it.',
-    'Questions? Call or WhatsApp Hemang (+91 97693 33516) or Harsh (+91 83698 94213).',
-    '',
-    '#RiyaSangHemang'
+    'Questions? Call or WhatsApp Hemang (+91 97693 33516) or Harsh (+91 83698 94213).'
   ].join('\n'),
   name: { title: 'Your name', help: '' },
   attending: {
@@ -60,7 +62,7 @@ var TEXT = {
   count: { title: 'How many of you are coming, including you?', help: '' },
   confirmation: 'Thank you, we\'ve got your answer! The Sangeet is on Friday, 22 January 2027, from 6:00 PM at Bhanushali Wadi, ' +
                 'Sector 19A, Nerul East, Navi Mumbai. If anything changes, call or WhatsApp Hemang (+91 97693 33516) ' +
-                'or Harsh (+91 83698 94213). #RiyaSangHemang'
+                'or Harsh (+91 83698 94213).'
 };
 
 // =================================================================
@@ -101,6 +103,36 @@ function createSangeetRsvpForm() {
   props.setProperty('SANGEET_FORM_ID', form.getId());
   props.setProperty('SANGEET_ITEMS', JSON.stringify({ name: name.getId(), attending: attending.getId(), count: count.getId() }));
   logLinks_(form);
+}
+
+/**
+ * Takes "#RiyaSangHemang" out of the LIVE form's description and thank-you message (22 Nov 2026: no hashtag on the
+ * sites, so none on the form either). Changes only those two texts, in place: same link, same questions, every answer
+ * kept. Any other wording edited in Google Forms stays as it is. Safe to run more than once.
+ */
+function removeHashtagFromSangeetForm() {
+  var form = openForm_();
+  var TAG = /\s*#RiyaSangHemang\b/g;
+  var clean = function (s) { return s.replace(TAG, '').replace(/\s+$/, ''); };
+
+  var desc = form.getDescription() || '';
+  var thanks = form.getConfirmationMessage() || '';
+  if (clean(desc) !== desc) { form.setDescription(clean(desc)); Logger.log('Description: hashtag removed.'); }
+  else Logger.log('Description: no hashtag (nothing to change).');
+  if (clean(thanks) !== thanks) { form.setConfirmationMessage(clean(thanks)); Logger.log('Thank-you message: hashtag removed.'); }
+  else Logger.log('Thank-you message: no hashtag (nothing to change).');
+
+  // Anywhere else (e.g. added by hand in Google Forms)? Only reported, not changed.
+  var HAS_TAG = /#RiyaSangHemang/;
+  var left = [];
+  if (HAS_TAG.test(form.getTitle())) left.push('the form title');
+  form.getItems().forEach(function (item) {
+    if (HAS_TAG.test(item.getTitle() + ' ' + item.getHelpText())) left.push('the question "' + item.getTitle() + '"');
+  });
+  if (left.length) Logger.log('Still has #RiyaSangHemang (edit by hand in Google Forms): ' + left.join(', '));
+
+  Logger.log('Answers so far: ' + form.getResponses().length + ' (all kept). The link is unchanged:');
+  Logger.log('  ' + form.getPublishedUrl());
 }
 
 /** Prints the links again, without changing anything. */
