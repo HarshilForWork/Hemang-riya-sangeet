@@ -25,14 +25,14 @@
   const RSVP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLScjt8fXO3nJDbcQimEJqLpDoN4Sx8DFivjK2zVznNaiuzPm1w/viewform";
 
   // Riya's link (/riya, see vercel.json): the same invite without any RSVP. It drops the RSVP buttons,
-  // the RSVP section, the RSVP card, the pop-up's RSVP button and the RSVP question in the FAQ.
+  // the RSVP section, the RSVP card, and the pop-up's RSVP button.
   const NO_RSVP = location.pathname === "/riya" || location.pathname === "/riya/";
 
   // Static page text, matched to data-i18n="key" in index.html
   const UI = {
     en: {
       intro: "come dance with...", introCta: "scroll to begin",
-      navSangeet: "Sangeet", navFaq: "FAQ", navRsvp: "RSVP",
+      navSangeet: "Sangeet", navRsvp: "RSVP",
       heroName: "Riya & Hemang", heroPrompt: "Scroll to explore",
       storyIntro: "a few moments that led us here...", storyTitle: "our love story",
       eventLead: "so come dance with us...", eventDate: "january 22, 2027",
@@ -44,14 +44,13 @@
       rsvpTitle: "RSVP", rsvpNote: "we'd love to have you with us", rsvpBtn: "RSVP now",
       detailsTitle: "and now some additional details...",
       detailsSub: "Everything you need for one very musical evening.",
-      faqTitle: "Questions and answers", faqHelp: "Can't find the answer here?", faqLink: "Reach out to Hemang or Harsh",
-      faqOutro: "We cannot wait to dance with you.",
+      faqLink: "Reach out to Hemang or Harsh",
       // used inside pop-ups
       call: "Call", whatsapp: "WhatsApp", rsvpContact: "Questions? Ask", openMaps: "Open in Google Maps", mapTitle: "Map to the venue",
     },
     gu: {
       intro: "આવો, ઝૂમીએ સાથે...", introCta: "શરૂ કરવા સ્ક્રોલ કરો",
-      navSangeet: "સંગીત", navFaq: "પ્રશ્નો", navRsvp: "હાજરી જણાવો",
+      navSangeet: "સંગીત", navRsvp: "હાજરી જણાવો",
       heroName: "રિયા & હેમાંગ", heroPrompt: "આગળ જોવા સ્ક્રોલ કરો",
       storyIntro: "થોડી પળો, જે અમને અહીં સુધી લાવી...", storyTitle: "અમારી પ્રેમકહાણી",
       eventLead: "તો આવો, સાથે ઝૂમીએ...", eventDate: "૨૨ જાન્યુઆરી, ૨૦૨૭",
@@ -63,8 +62,7 @@
       rsvpTitle: "હાજરી જણાવશો", rsvpNote: "આપની હાજરીથી અમને ખૂબ આનંદ થશે", rsvpBtn: "હાજરી જણાવો",
       detailsTitle: "અને હવે થોડી વધુ વિગતો...",
       detailsSub: "સંગીતભરી એક સાંજ માટે જરૂરી બધી માહિતી.",
-      faqTitle: "પ્રશ્નો અને જવાબો", faqHelp: "અહીં જવાબ ન મળ્યો?", faqLink: "હેમાંગ અથવા હર્ષનો સંપર્ક કરો",
-      faqOutro: "આપની સાથે ઝૂમવા અમે આતુર છીએ.",
+      faqLink: "હેમાંગ અથવા હર્ષનો સંપર્ક કરો",
       call: "ફોન કરો", whatsapp: "વૉટ્સએપ", rsvpContact: "પ્રશ્ન હોય તો", openMaps: "Google Maps માં ખોલો", mapTitle: "સ્થળનો નકશો",
     },
   };
@@ -79,7 +77,6 @@
     sangeetKicker: "સંગીત સંધ્યા",
     rsvp: "આપની હાજરી જણાવશો",
     details: "થોડી વધુ વિગતો",
-    faq: "પ્રશ્નો અને જવાબો",
   };
 
   // Every photo used on the site: [width, height, then the area to keep visible when a box has to crop it
@@ -138,7 +135,6 @@
   const CARDS = [
     { id: "sangeet", en: ["Sangeet", "Friday, 22 January · Nerul, Navi Mumbai"], gu: ["સંગીત સંધ્યા", "શુક્રવાર, ૨૨ જાન્યુઆરી · નેરુલ, નવી મુંબઈ"] },
     { id: "rsvp", href: RSVP_FORM, en: ["RSVP", "We'd love to have you with us."], gu: ["હાજરી જણાવો", "આપની હાજરીથી અમને ખૂબ આનંદ થશે."] },
-    { id: "hashtag", en: ["#RiyaSangHemang", "Share every moment with us."], gu: ["#RiyaSangHemang", "દરેક પળ અમારી સાથે શેર કરો."] },
   ];
 
   const OVERLAYS = {
@@ -160,32 +156,8 @@
         ],
       },
     },
-    hashtag: {
-      en: {
-        title: "#RiyaSangHemang", description: "Snap, post and tag — we'd love to see the Sangeet through your eyes.",
-        sections: [["Our hashtag", "#RiyaSangHemang", "Use it on Instagram, WhatsApp statuses and anywhere else you share photos and dance videos from the Sangeet."]],
-      },
-      gu: {
-        title: "#RiyaSangHemang", description: "ફોટો પાડો, પોસ્ટ કરો અને ટૅગ કરો — સંગીત સંધ્યા આપની નજરે જોવી અમને ગમશે.",
-        sections: [["અમારો હેશટૅગ", "#RiyaSangHemang", "સંગીત સંધ્યાના ફોટા અને ડાન્સના વીડિયો ઇન્સ્ટાગ્રામ, વૉટ્સએપ સ્ટેટસ કે બીજે ક્યાંય પણ શેર કરો ત્યારે આ હેશટૅગ વાપરજો."]],
-      },
-    },
   };
 
-  const FAQ = {
-    en: [
-      ["When and where is the Sangeet?", ["Friday, 22 January 2027, from 6:00 PM at Bhanushali Wadi, Basveshewar Maharaj Marg, Sector 19A, Nerul East, Navi Mumbai."]],
-      ["How do I RSVP?", ["Tap any RSVP button on this page. It opens a short Google Form in a new tab.", "You can also call or text Hemang (+91 97693 33516) or Harsh (+91 83698 94213)."], "rsvp"],
-      ["How do I find the venue?", ["Tap the Sangeet card (or Map & contacts) for a map and a link to Google Maps."]],
-      ["Do you have a hashtag?", ["Yes! Please share your photos and dance videos with #RiyaSangHemang."]],
-    ],
-    gu: [
-      ["સંગીત સંધ્યા ક્યારે અને ક્યાં છે?", ["શુક્રવાર, ૨૨ જાન્યુઆરી ૨૦૨૭, સાંજે ૬:૦૦ વાગ્યાથી, ભાનુશાલી વાડી, બસવેશ્વર મહારાજ માર્ગ, સેક્ટર ૧૯એ, નેરુલ ઈસ્ટ, નવી મુંબઈ."]],
-      ["હાજરી કેવી રીતે જણાવું?", ["આ પેજ પર 'હાજરી જણાવો' બટન પર ટૅપ કરો. નવી ટૅબમાં એક નાનું Google ફોર્મ ખૂલશે.", "આપ હેમાંગ (+91 97693 33516) અથવા હર્ષ (+91 83698 94213) ને ફોન કે મેસેજ પણ કરી શકો છો."], "rsvp"],
-      ["સ્થળ કેવી રીતે શોધું?", ["નકશો અને Google Maps ની લિંક માટે 'સંગીત સંધ્યા' કાર્ડ (અથવા 'નકશો અને સંપર્ક') પર ટૅપ કરો."]],
-      ["કોઈ હેશટૅગ છે?", ["હા! આપના ફોટા અને ડાન્સના વીડિયો #RiyaSangHemang સાથે શેર કરજો."]],
-    ],
-  };
 
   // Sangeet: 2027-01-22 18:00 IST (UTC+5:30)
   const COUNTDOWN_TARGET = Date.UTC(2027, 0, 22, 12, 30, 0);
@@ -197,10 +169,8 @@
     $("#rsvp-callout-section").remove();
     $$("a[data-rsvp]").forEach((a) => (a.closest("li") || a).remove());
   }
-  // "Reach out to …" under the FAQ title calls the first contact
-  $$(".faq__link").forEach((a) => (a.href = `tel:${CONTACTS[0].tel}`));
-  // FAQ entries tagged "rsvp" are left out on Riya's link (same filter for both languages, so Mix lines up)
-  const faqFor = (l) => FAQ[l].filter((f) => !(NO_RSVP && f[2] === "rsvp"));
+  // "Reach out to …" under the RSVP button calls the first contact
+  $$(".contact-link").forEach((a) => (a.href = `tel:${CONTACTS[0].tel}`));
 
   // Stable screen height (CSS 100svh). window.innerHeight changes whenever a phone browser's address
   // bar slides in or out while scrolling; using it made the opening animation jump on iPhones.
@@ -753,7 +723,7 @@
 
   // Detail cards and their pop-up banners use stock photos, never the couple's photos (Hemang, 18 Nov 2026).
   // Files in assets/stock/ (Unsplash License: free, no credit required; sources in CONTEXT.md).
-  const CARD_ART = { sangeet: ["sangeet"], rsvp: ["dandiya"], hashtag: ["hashtag"] };
+  const CARD_ART = { sangeet: ["sangeet"], rsvp: ["dandiya"] };
   // where to crop a photo when the box is wider than the photo (default: centre)
   const ART_POS = { dandiya: "50% 52%" }; // the sticks and marigolds
   const artMedia = (id) => {
@@ -782,24 +752,6 @@
     }).join("");
     if (!gridBuilt) $$("#detailsGrid [data-reveal]").forEach((el) => io.observe(el));
     gridBuilt = true;
-  }
-
-  /* ---------------- FAQ ---------------- */
-  const chevron = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>`;
-  function buildFaq() {
-    const list = $("#faqList");
-    const gu = faqFor("gu");
-    list.innerHTML = faqFor(tl()).map(([q, a], i) => `
-      <div class="faq__item">
-        <button class="faq__q" aria-expanded="false" aria-controls="faq-a-${i}"><span>${esc(q)}${mix() ? `<small class="accent accent--faq">${esc(gu[i][0])}</small>` : ""}</span><i class="faq__icon">${chevron}</i></button>
-        <div class="faq__a" id="faq-a-${i}" role="region"><div>${a.map((p) => `<p>${esc(p)}</p>`).join("")}</div></div>
-      </div>`).join("");
-    $$(".faq__q", list).forEach((b) => b.addEventListener("click", () => {
-      const item = b.parentElement;
-      const open = !item.classList.contains("is-open");
-      item.classList.toggle("is-open", open);
-      b.setAttribute("aria-expanded", open);
-    }));
   }
 
   /* ---------------- SHEET (overlay pages) ---------------- */
@@ -909,7 +861,6 @@
     buildStory();
     layoutStory();
     buildGrid();
-    buildFaq();
     renderSheet();
     applyFocus();
     tick();

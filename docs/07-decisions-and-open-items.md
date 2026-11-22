@@ -4,6 +4,7 @@
 
 | Decision | Reason / who |
 |---|---|
+| No FAQ and no wedding hashtag on any site (22 Nov 2026): FAQ section, nav link, #RiyaSangHemang card/pop-up, footer tag and page-description hashtag removed; the "Reach out to …" link moved under the RSVP button; detail cards now centre a short last row | Hemang: "I don't need Q&A… there's no hashtag" |
 | No R&H / HR monogram anywhere: the nav has no logo, just the links, centred (RSVP alone at the top right on phones). The full names "Riya & Hemang" are fine where they already appear | The couple looked at every logo option (19 Nov 2026) and decided against initials |
 | Separate Sangeet-only site, built from a copy of the main site (18 Nov 2026) | Some guests are invited to the Sangeet only; the main site reveals the wedding |
 | Nothing anywhere hints at the wedding, served code comments included | Guests can view source; an accidental mention would be awkward |

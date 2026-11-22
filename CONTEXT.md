@@ -1,5 +1,12 @@
 # CONTEXT — start here
 
+> **22 Nov 2026: no FAQ and no hashtag on any of the three sites** (Hemang: "I don't need Q&A… there's no hashtag").
+> Removed everywhere: the FAQ section and its nav link, the #RiyaSangHemang card and pop-up, the footer tag, and the hashtag in
+> the page description. On the full site and the short invite the "Reach out to …" contact link moved under the RSVP button
+> (Riya's family on `/riya`, none on `/riyaguests`); the Sangeet site's contacts stay in its Sangeet pop-up. The story photos'
+> handwritten "firsts" tags (#FirstHotChocolate…) are a different thing and stay. Older notes below that mention the FAQ or
+> the hashtag describe what was there before.
+
 > **`main` is the trimmed version** (Hemang approved it on 18 Nov 2026), cut the way the short invite (`lite-site/`) was:
 > one story chapter with 3 photos, no big centre line, no footer, 4 FAQs. The page is about 11 phone screens instead of 21.
 > The earlier, fuller Sangeet version (4-chapter story, 18 photos, vision line, footer, 6 FAQs) is commit `e1e8ed3`,
@@ -24,8 +31,8 @@ The couple sends each group of guests **one** link. There are **three separate c
 | Guests | Link to send | What they see | RSVP | Repo · folder |
 |---|---|---|---|---|
 | **Close guests**, invited to both events | https://hemang-riya.vercel.app | The whole story (5 chapters, 30 photos), Sangeet + Wedding, Travel & Stay | The couple's main Google Form (asks about the wedding) | `HarshilForWork/Hemang-riya` (public) · `site/` |
-| **Most guests**, invited to both events | https://riya-hemang-invite.vercel.app | The same look and both events (Travel & Stay too), much less to read: one-chapter story, 3 FAQs | The same main Google Form | `HarshilForWork/riya-hemang-invite` (private) · `lite-site/` |
-| **Riya's guests**, invited to both events | **https://riya-hemang-invite.vercel.app/riya** | The same short invite, but the contacts (the FAQ's "Reach out to…" link and the RSVP answer) are Riya's family: Dharmesh Raval (her dad) and Kunj Raval (her brother) | The same main Google Form (its description and thank-you still name Hemang and Harsh) | Same repo and page; the path switches the contacts |
+| **Most guests**, invited to both events | https://riya-hemang-invite.vercel.app | The same look and both events (Travel & Stay too), much less to read: one-chapter story | The same main Google Form | `HarshilForWork/riya-hemang-invite` (private) · `lite-site/` |
+| **Riya's guests**, invited to both events | **https://riya-hemang-invite.vercel.app/riya** | The same short invite, but the contacts (the "Reach out to…" link under the RSVP button) are Riya's family: Dharmesh Raval (her dad) and Kunj Raval (her brother) | The same main Google Form (its description and thank-you still name Hemang and Harsh) | Same repo and page; the path switches the contacts |
 | **Riya's guests** who get the invite with no RSVP | **https://riya-hemang-invite.vercel.app/riyaguests** | The same short invite as `/riya` (both events, Travel & Stay, the Ravals first in the countdown line), but **no contacts at all**: no "Reach out to…" link, no names or numbers | **None**: no RSVP button, section, card or FAQ | Same repo and page; the path switches RSVP and the contacts off |
 | **Sangeet-only guests** (Hemang's friends) | https://heya-sangeet.vercel.app | Only the Sangeet (Fri 22 Jan 2027, Nerul, Navi Mumbai). **Never the wedding** | Its own Sangeet-only Google Form, in English: name, coming?, how many (made 19 Nov 2026 from the script in `tools/forms/`) | `HarshilForWork/Hemang-riya-sangeet` (public) · `sangeet-site/` |
 | **Riya's friends** who won't come but should still get the invite | **https://heya-sangeet.vercel.app/riya** | The same Sangeet page, with Riya's family as the contacts (Dharmesh and Kunj Raval) | **None**: no RSVP button, section, card or FAQ | Same repo and page; the path switches RSVP off and the contacts |

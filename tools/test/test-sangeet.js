@@ -1,4 +1,4 @@
-// Sangeet-only site: nothing about the wedding anywhere (any language, pop-ups, FAQ, served code),
+// Sangeet-only site: nothing about the wedding anywhere (any language, pop-ups, served code),
 // every RSVP button opens the Google Form in a new tab, the countdown targets the Sangeet, the Sangeet
 // touches render, and nothing is wider than the screen.
 // On Riya's link (/riya) there must be NO RSVP at all: no RSVP words or form links in any language or pop-up.
@@ -29,10 +29,9 @@ for (const f of ["index.html", "app.js", "styles.css"]) {
   out.leaks.push(...hits(f, t));
 }
 
-// every language: page text, FAQ answers, each pop-up
+// every language: page text and each pop-up
 for (const l of ["en", "gu", "mix"]) {
   $("#langToggle").click(); await wait(60); $(`[data-lang="${l}"]`).click(); await wait(300);
-  $$(".faq__item").forEach((i) => i.classList.add("is-open"));
   // read the page without the live countdown digits: "27 minutes left" in Gujarati (૨૭) isn't the wedding date.
   // Blanked and restored in one synchronous step, so the countdown never shows the gap
   const nums = $$(".countdown__num"), live = nums.map((e) => e.textContent);
@@ -59,7 +58,8 @@ out.rsvpSection = !!$("#rsvp-callout-section");
 out.formSharedWithMainSite = !NO_RSVP && FORM.includes(MAIN_SITE_FORM_ID);
 out.rsvpOverlayButtons = $$('[data-overlay="rsvp"]').length;
 out.onSiteForm = !!$("form");
-out.faqQuestions = $$(".faq__q").length;
+out.faqSection = !!$("#faq"); // removed 22 Nov 2026: must be false
+out.hashtagCard = !!$('[data-overlay="hashtag"]') || /RiyaSangHemang/.test(document.body.innerHTML); // must be false
 out.sangeetPopup = await (async () => {
   $('button.dcard[data-overlay="sangeet"]').click(); await wait(500);
   const a = $('#sheet a[href^="https://docs.google.com/forms"]');
@@ -69,19 +69,16 @@ out.sangeetPopup = await (async () => {
 })();
 
 // Contacts: Riya's link gives her family (Dharmesh and Kunj Raval), the main link Hemang and Harsh.
-// Neither link may show the other family's names or numbers (page, FAQ link, Sangeet pop-up, any link).
+// Neither link may show the other family's names or numbers (page, Sangeet pop-up, any link).
 const HEMANG_SIDE = /9769333516|97693 33516|8369894213|83698 94213|Hemang or Harsh|હેમાંગ અથવા હર્ષ/;
 const RIYA_SIDE = /9998870158|99988 70158|7016906401|70169 06401|Dharmesh|Kunj|ધર્મેશ|કુંજ/;
 out.contacts = {};
 out.wrongContacts = [];
 for (const l of ["en", "gu", "mix"]) {
   $("#langToggle").click(); await wait(60); $(`[data-lang="${l}"]`).click(); await wait(300);
-  $$(".faq__item").forEach((i) => i.classList.add("is-open"));
   $('button.dcard[data-overlay="sangeet"]').click(); await wait(500);
-  const link = $(".faq__link");
   out.contacts[l] = {
     popup: $$("#sheet .contact").map((c) => `${$(".contact__name", c).textContent} ${$(".contact__num", c).textContent}`),
-    faqLink: `${link.textContent} -> ${link.getAttribute("href")}`,
   };
   const all = [document.body.innerText, $("#sheet").textContent, ...$$("a").map((a) => a.href)].join(" ");
   out.wrongContacts.push(...find(NO_RSVP ? HEMANG_SIDE : RIYA_SIDE, `[${l}]`, all));
