@@ -30,7 +30,7 @@ Riya & Hemang have two celebrations: the **Sangeet** (Navi Mumbai) and the **wed
 
 1. **Welcome screen**: "come dance with…" + "scroll to begin" on the dark warm colour, with a garland of fairy lights and music notes floating up. A scroll, swipe, ↓ key or tap opens the site, and the hero's big "Riya & Hemang" finishes the sentence.
 2. **Hero**: photo 37 (Toronto streetcar) shrinking into a collage with 68, 52, 54 and 5. This is the same as the main site.
-3. "a few moments that led us here…" leading into **our love story**: one short chapter, "our story, the short version", with 3 photos as Instagram prints (1 "Where it all began", 57 #FirstNavratri, 32 #SheSaidYes).
+3. "a few moments that led us here…" leading into **our love story**: one short chapter, "our story", with 3 photos as Instagram prints (1 "Where it all began", 57 #FirstNavratri, 32 #SheSaidYes).
 4. **Countdown**: "so come dance with us…", "january 22, 2027", days/hours/minutes/seconds "until the sangeet". Confetti with music notes, fairy lights along the top.
 5. **The invite card**: a stock dance-party photo in a tilted white print frame, then "The Sangeet", handwritten "an evening of music & dance", the date, the time with a bouncing equalizer, venue, address (links to Google Maps), "bring your dancing shoes!", and **RSVP now** + **Map & contacts** buttons.
 6. **RSVP** callout: "we'd love to have you with us" + RSVP now.

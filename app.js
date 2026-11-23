@@ -94,7 +94,7 @@
     68: [1200, 1600, 0.17, 0.263, 0.739, 0.57],
   };
 
-  // Story: ONE short chapter with 3 photos (the short version, like the short invite).
+  // Story: ONE chapter with 3 photos, like the short invite.
   // photos: file numbers; caps: caption under each photo (same order), per language.
   // tags: optional hashtag; a tagged photo's caption stays "". Frames look like Instagram prints
   // (white border, deeper bottom edge with the hashtag or caption handwritten on it). No dates on photos.
@@ -104,12 +104,12 @@
       side: "left", photos: [1, 57, 32],
       tags: [null, "#FirstNavratri", "#SheSaidYes"],
       en: {
-        title: "our story, the short version",
+        title: "our story",
         body: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes.",
         caps: ["Where it all began", "", ""],
       },
       gu: {
-        title: "અમારી કહાણી, ટૂંકમાં",
+        title: "અમારી કહાણી",
         body: "અમે ટોરોન્ટોમાં એક કોન્સર્ટમાં મળ્યા, એટલે આ કહાણીમાં સંગીત તો હોવાનું જ. 'પહેલી વાર'થી ભરેલા એક વર્ષ પછી — પહેલા ગરબા સહિત — તેણે ઘૂંટણિયે બેસીને પૂછ્યું, અને તેણે હા પાડી.",
         caps: ["જ્યાંથી બધું શરૂ થયું", "", ""],
       },
