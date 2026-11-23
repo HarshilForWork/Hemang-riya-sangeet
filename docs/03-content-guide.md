@@ -33,7 +33,7 @@ The story intro ("a few moments that led us here…" → "our love story") is th
 
 ## Story: one short chapter (current)
 
-*our story* / *અમારી કહાણી*: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes." Photos: 1 "Where it all began" · 57 #FirstNavratri · 32 #SheSaidYes (2 hashtags). It's modelled on the short invite's chapter, with a music/garba twist, and keeps the paragraph short so it clears the photo pile in Mix mode on short phones.
+(no heading): "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes." Photos: 1 "Where it all began" · 57 #FirstNavratri · 32 #SheSaidYes (2 hashtags). It's modelled on the short invite's chapter, with a music/garba twist, and keeps the paragraph short so it clears the photo pile in Mix mode on short phones.
 
 ## The earlier full story (branch `full`: 4 chapters, 18 photos, 9 hashtags)
 

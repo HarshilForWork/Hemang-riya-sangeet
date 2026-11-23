@@ -104,12 +104,12 @@
       side: "left", photos: [1, 57, 32],
       tags: [null, "#FirstNavratri", "#SheSaidYes"],
       en: {
-        title: "our story",
+        title: "",
         body: "We met at a concert in Toronto, so of course there's music in this story. A year of firsts later, our first garba included, he got down on one knee and she said yes.",
         caps: ["Where it all began", "", ""],
       },
       gu: {
-        title: "અમારી કહાણી",
+        title: "",
         body: "અમે ટોરોન્ટોમાં એક કોન્સર્ટમાં મળ્યા, એટલે આ કહાણીમાં સંગીત તો હોવાનું જ. 'પહેલી વાર'થી ભરેલા એક વર્ષ પછી — પહેલા ગરબા સહિત — તેણે ઘૂંટણિયે બેસીને પૂછ્યું, અને તેણે હા પાડી.",
         caps: ["જ્યાંથી બધું શરૂ થયું", "", ""],
       },
@@ -461,8 +461,9 @@
     cards = []; chapters = []; chaptersM = [];
     STORY.forEach((ch, ci) => {
       const t = ch[tl()];
-      const accent = mix() ? `<span class="accent accent--chapter">${esc(ch.gu.title)}</span>` : "";
-      const text = `<h3>${esc(t.title)}${accent}</h3><p>${esc(t.body)}</p>`;
+      const accent = mix() && ch.gu.title ? `<span class="accent accent--chapter">${esc(ch.gu.title)}</span>` : "";
+      // no heading when the title is empty: the section title "our love story" already says it (Hemang, 23 Nov 2026)
+      const text = `${t.title ? `<h3>${esc(t.title)}${accent}</h3>` : ""}<p>${esc(t.body)}</p>`;
       const c = document.createElement("div");
       c.className = "chapter";
       c.innerHTML = ch.side === "left"
